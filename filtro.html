@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(255, 255, 255);
+            color: #333;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .texto {
+            background-color: white;
+            font-size: 0.8em;
+            text-align: left;
+            padding: 5px 20px;
+            border-bottom: 1px solid #0000ff;
+        }
+
+        .encabezado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logopng img {
+            height: 80px;
+        }
+
+        .buscar {
+            display: flex;
+            border: 2px solid #0000ff;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 48px;
+            background-color: transparent;
+            align-items: stretch;
+        }
+
+        .buscar input {
+            border: none;
+            padding: 0 15px; 
+            width: 500px; 
+            font-size: 1.1em;
+            outline: none;
+            height: 100%;
+            line-height: 48px; 
+        }
+
+        .buscar button {
+            background-color: #0000ff;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+            font-size: 1.2em;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -1px; 
+            flex-shrink: 0; 
+        }
+
+        .usuarios {
+            display: flex;
+            align-items: center;
+            gap: 25px; 
+        }
+
+        .usuarios a {
+            margin-left: 0;
+            color: #555;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .anuncio {
+            background-color: rgb(245, 245, 245);
+            font-family: Arial, sans-serif;
+            color: #333;
+            font-size: 0.8em;
+            padding: 5px 0;
+        }
+
+        .menu {
+            background-color: #0000ff;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .regla {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .regla button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .regla button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .regla button i {
+            margin-right: 8px;
+        }
+
+        .regla a {
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.95em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .regla a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .separador, .separador1, .separador3 {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 15px 0;
+        }
+
+        .Contenedor {
+            width: 100%;
+            max-width: 1920px;
+            height: 350px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            position: relative;
+        } 
+
+        .pasa {
+            display: flex;
+            width: 300%; 
+            height: 100%;
+            animation: slide-automatico 25s linear infinite; 
+        }
+
+        .imagen1, .imagen2, .imagen3 {
+            width: calc(100% / 3);
+            flex-shrink: 0;
+        }
+
+        .imagen1 img, .imagen2 img, .imagen3 img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes slide-automatico {
+            0% { transform: translateX(0); }
+            33.33% { transform: translateX(-33.33%); }
+            66.66% { transform: translateX(-66.66%); }
+            100% { transform: translateX(0); }
+        }
+
+        .titulow {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: #0000ff;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            padding: 0 20px;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* 📌 SIDEBAR DE FILTROS (en lugar de categorías) */
+        .sidebar {
+            flex: 0 0 250px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h3 {
+            color: #0000ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar h3 i {
+            color: #0000ff;
+        }
+
+        .filtro-grupo {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #0000ff;
+        }
+
+        .filtro-grupo h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filtro-grupo h4 i {
+            color: #0000ff;
+            font-size: 0.9em;
+        }
+
+        .filtro-opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filtro-opciones label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            cursor: pointer;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            color: #555;
+        }
+
+        .filtro-opciones label:hover {
+            color: #0000ff;
+        }
+
+        .filtro-opciones input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #0000ff;
+            cursor: pointer;
+        }
+
+        .btn-filtrar {
+            width: 100%;
+            background-color: #0000ff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-filtrar:hover {
+            background-color: #0000cc;
+        }
+
+        .btn-limpiar {
+            width: 100%;
+            background-color: #666;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-limpiar:hover {
+            background-color: #555;
+        }
+
+        /* 📌 PRODUCTOS */
+        .productos {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .IMG {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .IMG:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .IMG img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .IMG p {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #333;
+            margin: 0;
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        .precio {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .btn-carrito {
+            display: block;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            margin-top: auto;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-carrito:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-carrito i {
+            margin-right: 8px;
+        }
+
+        /* 📌 BOTÓN VER MÁS */
+        .btn-ver-mas-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn-ver-mas {
+            background-color: #0000ff;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-ver-mas:hover {
+            background-color: #0000cc;
+        }
+
+        /* 📌 SECCIÓN "NUESTRA MEJOR SELECCIÓN" */
+        .seleccion {
+            padding: 30px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .seleccion h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #0000ff;
+            font-size: 1.5em;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card {
+            flex: 0 0 calc(33.333% - 14px);
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .titulo {
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .stock {
+            color: #28a745;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 13px;
+        }
+
+        .precio {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #0000ff;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background: #0000cc;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        /* 📌 FOOTER */
+        .footer {
+            background-color: #0000ff;
+            color: white;
+            padding: 30px 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact, .footer-social, .footer-legal {
+            flex: 1 1 250px;
+            margin: 10px;
+        }
+
+        .footer-logo {
+            width: 100px;
+            margin-bottom: 10px;
+            filter: invert(1);
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffc107;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1 1 200px;
+            margin: 10px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            color: whitesmoke;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc107;
+            text-decoration: underline;
+        }
+
+        /* 📌 DROPDOWN */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #555;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #f5f5f5;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .dropdown-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .dropdown-item i {
+            width: 16px;
+            text-align: center;
+        }
+
+        /* 📌 RESPONSIVE */
+        @media (max-width: 1200px) {
+            .productos {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .card {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .productos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .buscar input {
+                width: 300px;
+            }
+            .main-content {
+                flex-direction: column;
+            }
+            .sidebar {
+                flex: 0 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .productos {
+                grid-template-columns: 1fr;
+            }
+            .encabezado {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .buscar {
+                width: 100%;
+            }
+            .buscar input {
+                width: 100%;
+            }
+            .usuarios {
+                justify-content: center;
+            }
+            .regla {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .card {
+                flex: 0 0 100%;
+            }
+            .footer-top {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .Contenedor {
+                height: 250px;
+            }
+            .btn-ver-mas {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pasa img {
+                height: 200px;
+            }
+            .titulow p {
+                font-size: 1.1em;
+            }
+            .carousel-container {
+                padding: 0 30px;
+            }
+            .sidebar {
+                padding: 15px;
+            }
+            .filtro-grupo {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="texto">
+        <p>Bienvenido a Tecnicom</p>
+    </div>
+
+    <header class="encabezado">
+        <div class="logopng">
+            <a href="principal.html">
+                <img src="T.png" alt="loguito">
+            </a>
+        </div>
+        <div class="buscar">
+            <input type="text" placeholder="Buscar aquí">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="usuarios">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-user"></i> Cuenta usuario <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="Ingresar.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+                    <a href="registrar.html" class="dropdown-item"><i class="fas fa-user-plus"></i> Registrar</a>
+                </div>
+            </div>
+
+            <a href="carrito.html"><i class="fas fa-shopping-cart"></i> Mi carrito de compras</a>
+        </div>
+    </header>
+
+    <div class="anuncio">
+        <marquee>¡Jueves de descuentazos! Aprovecha las super ofertas que tiene Tecnicom para ti en variedades de
+            productos seleccionados. ¡No pierdas esta oportunidad, te esperamos!</marquee>
+    </div>
+
+    <nav class="menu">
+        <div class="regla">
+            <button><i class="fas fa-bars"></i> Todas las categorías</button>
+            <a href="enlace.html">Arma tu PC</a>
+            <a href="#">Compra tu primera laptop</a>
+            <a href="#">Pedidos</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="separador"></div>
+
+    <div class="Contenedor">
+        <div class="pasa">
+            <div class="imagen1">
+                <img src="imagen1.png" alt="primero">
+            </div>
+            <div class="imagen2">
+                <img src="imagen2.png" alt="segundo">
+            </div>
+            <div class="imagen3">
+                <img src="imagen3.png" alt="tercero">
+            </div>
+        </div>
+    </div>
+
+    <div class="separador1"></div>
+
+    <div class="titulow">
+        <p>PRODUCTOS DESTACADOS</p>
+    </div>
+    
+    <div class="main-content">
+        <!-- 📌 SIDEBAR DE FILTROS (reemplazando categorías) -->
+        <aside class="sidebar">
+            <h3><i class="fas fa-filter"></i> FILTROS</h3>
+            
+            <div class="filtro-grupo">
+                <h4><i class="fas fa-laptop"></i> Tipo de Producto</h4>
+                <div class="filtro-opciones">
+                    <label>
+                        <input type="checkbox" name="tipo" value="laptop" checked>
+                        Laptops
+                    </label>
+                    <label>
+                        <input type="checkbox" name="tipo" value="pc">
+                        PC Completas
+                    </label>
+                    <label>
+                        <input type="checkbox" name="tipo" value="componente">
+                        Componentes
+                    </label>
+                    <label>
+                        <input type="checkbox" name="tipo" value="periferico">
+                        Periféricos
+                    </label>
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <h4><i class="fas fa-tag"></i> Marca</h4>
+                <div class="filtro-opciones">
+                    <label>
+                        <input type="checkbox" name="marca" value="hp">
+                        HP
+                    </label>
+                    <label>
+                        <input type="checkbox" name="marca" value="asus">
+                        ASUS
+                    </label>
+                    <label>
+                        <input type="checkbox" name="marca" value="msi">
+                        MSI
+                    </label>
+                    <label>
+                        <input type="checkbox" name="marca" value="lenovo">
+                        Lenovo
+                    </label>
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <h4><i class="fas fa-dollar-sign"></i> Precio</h4>
+                <div class="filtro-opciones">
+                    <label>
+                        <input type="checkbox" name="precio" value="menor-2000">
+                        Menos de S/ 2,000
+                    </label>
+                    <label>
+                        <input type="checkbox" name="precio" value="2000-5000">
+                        S/ 2,000 - S/ 5,000
+                    </label>
+                    <label>
+                        <input type="checkbox" name="precio" value="mayor-5000">
+                        Más de S/ 5,000
+                    </label>
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <h4><i class="fas fa-cogs"></i> Especificaciones</h4>
+                <div class="filtro-opciones">
+                    <label>
+                        <input type="checkbox" name="especificaciones" value="gamer">
+                        Gamer
+                    </label>
+                    <label>
+                        <input type="checkbox" name="especificaciones" value="rtx">
+                        Con RTX
+                    </label>
+                    <label>
+                        <input type="checkbox" name="especificaciones" value="ssd">
+                        Con SSD
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-filtrar" onclick="filtrarProductos()">
+                <i class="fas fa-filter"></i> Aplicar Filtros
+            </button>
+            <button class="btn-limpiar" onclick="limpiarFiltros()">
+                <i class="fas fa-times"></i> Limpiar Filtros
+            </button>
+        </aside>
+
+        <!-- 📌 PRODUCTOS -->
+        <div class="productos" id="productos-container">
+            <div class="IMG">
+                <img src="https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000"
+                    alt="imagen 1">
+                <p>Laptop Gamer Hp Victus 15-fb3020la, amd Ryzen 7, 16gb Ram, 512gb Ssd, nvidia Geforce Rtx 3050,
+                    fhd,15.6"</p>
+                <span class="precio">S/ 3,299.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop Gamer Hp Victus', 3299, 'https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <div class="IMG">
+                <img src="https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg"
+                    alt="imagen 2">
+                <p>Laptop ASUS Zenbook Pro Duo</p>
+                <span class="precio">S/ 4,599.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop ASUS Zenbook Pro Duo', 4599, 'https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg"
+                    alt="imagen 3">
+                <p>Laptop Hp 15-fd0253la Intel Core i5-1334u 8gb Ram 512gb Ssd 15.6"</p>
+                <span class="precio">S/ 2,199.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop Hp 15-fd0253la Intel Core i5', 2199, 'https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <div class="IMG">
+                <img src="https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82" alt="imagen 4">
+                <p>Gamer Intel Core I5 Rtx3050 24gb 512gb Ssd Loq 12° Gen 15.6" Fhd 144 Hz</p>
+                <span class="precio">S/ 4,789.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659"
+                    alt="imagen 5">
+                <p>LAPTOP ASUS ROG STRIX G615JMR-RV165W INTEL CORE I7 16GB RAM 512GB SSD 16" RTX 5060</p>
+                <span class="precio">S/ 4,999.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop ASUS ROG STRIX G615JMR', 4999, 'https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad" alt="imagen 6">
+                <p>Laptop ROG Strix G16 R9 16GB RAM 1TB SSD RTX 5060 8GB W11</p>
+                <span class="precio">S/ 7,999.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop ROG Strix G16 R9', 7999, 'https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image"
+                    alt="imagen 8">
+                <p>Laptop ROG Strix SCAR 18 (2025) G835LX-SA119W</p>
+                <span class="precio">S/ 21,999.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop ROG Strix SCAR 18', 21999, 'https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad" alt="imagen 9">
+                <p>LAPTOP ASUS ROG STRIX G18 CORE ULTRA 9-275HX 32GB RAM 2TB SSD RTX 5080 16GB 18" 2.5K, WIN11</p>
+                <span class="precio">S/ 21,999.00</span>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('LAPTOP ASUS ROG STRIX G18', 21999, 'https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📌 BOTÓN VER MÁS -->
+    <div class="btn-ver-mas-container">
+        <button class="btn-ver-mas" onclick="cargarMasProductos()">
+            <i class="fas fa-plus-circle"></i> VER MÁS PRODUCTOS
+        </button>
+    </div>
+
+    <section class="seleccion">
+        <h2>Nuestra mejor selección para ti</h2>
+        <div class="carousel-container">
+            <button class="prev">&#10094;</button>
+            <div class="carousel" id="carousel">
+                <div class="card">
+                    <img src="imagenpc.png" alt="PC 1">
+                    <p class="titulo">PC INTEL I5 14400F + H610M + 16GB DDR5 + 500GB M.2 + RTX 3060</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/2,699.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC INTEL I5 14400F + RTX 3060', 2699, 'imagenpc.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc2.png" alt="PC 2">
+                    <p class="titulo">PC RYZEN 5 7600X + B650M + 16GB DDR5 + 500GB M.2 + RX 7600 XT</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/3,219.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC RYZEN 5 7600X + RX 7600 XT', 3219, 'imagenpc2.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc3.png" alt="PC 3">
+                    <p class="titulo">PC RYZEN 7 7700 + B650M + 16GB DDR5 + 500GB M.2 + RX 7600 XT</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/3,662.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC RYZEN 7 7700 + RX 7600 XT', 3662, 'imagenpc3.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc4.png" alt="PC 4">
+                    <p class="titulo">PC INTEL I5 14400F + B760M + 32GB DDR5 + 1TB M.2 + RTX 5070</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/4,799.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC INTEL I5 14400F + RTX 5070', 4799, 'imagenpc4.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc5.png" alt="PC 5">
+                    <p class="titulo">PC RYZEN 7 7700X + B650M + 32GB DDR5 + 1TB M.2 + RX 7600 XT</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/5,038.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC RYZEN 7 7700X + RX 7600 XT', 5038, 'imagenpc5.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+            </div>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Orden de Servicio</a></li>
+                    <li><a href="#">Libro de Reclamaciones</a></li>
+                    <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                    <li><a href="#">Regístrate</a></li>
+                    <li><a href="#">Recuperar Clave</a></li>
+                    <li><a href="#">Cómo Comprar</a></li>
+                    <li><a href="#">Boletas Electrónicas</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Servicio Postventa</a></li>
+                    <li><a href="#">Mapa Productos</a></li>
+                    <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Suscríbete</a></li>
+                    <li><a href="#">Tiendas</a></li>
+                    <li><a href="#">Seguir mi pedido</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DATOS DE PRODUCTOS
+        const todosLosProductos = [
+            {
+                id: 1,
+                nombre: "Laptop Gamer HP Victus 15-fb3020la",
+                descripcion: "AMD Ryzen 7, 16GB RAM, 512GB SSD, NVIDIA GeForce RTX 3050, FHD 15.6\"",
+                precio: 3299.00,
+                imagen: "https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000",
+                tipo: "laptop",
+                marca: "hp",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 2,
+                nombre: "Laptop ASUS Zenbook Pro Duo",
+                descripcion: "Pantalla dual, Intel Core i9, 32GB RAM, 1TB SSD, NVIDIA RTX 3070",
+                precio: 4599.00,
+                imagen: "https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg",
+                tipo: "laptop",
+                marca: "asus",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 3,
+                nombre: "Laptop HP 15-fd0253la Intel Core i5",
+                descripcion: "Intel Core i5-1334U, 8GB RAM, 512GB SSD, Windows 11, 15.6\"",
+                precio: 2199.00,
+                imagen: "https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg",
+                tipo: "laptop",
+                marca: "hp",
+                especificaciones: ["ssd"]
+            },
+            {
+                id: 4,
+                nombre: "Gamer Intel Core i5 RTX 4060",
+                descripcion: "Intel Core i5, 24GB RAM, 512GB SSD, 15.6\" FHD 144Hz, Windows 11",
+                precio: 4789.00,
+                imagen: "https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82",
+                tipo: "laptop",
+                marca: "asus",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 5,
+                nombre: "LAPTOP ASUS ROG STRIX G615JMR",
+                descripcion: "Intel Core i7, 16GB RAM, 512GB SSD, 16\" RTX 4060, Windows 11",
+                precio: 4999.00,
+                imagen: "https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659",
+                tipo: "laptop",
+                marca: "asus",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 6,
+                nombre: "Laptop ROG Strix G16 R9",
+                descripcion: "AMD Ryzen 9, 16GB RAM, 1TB SSD, RTX 5060 8GB, Windows 11",
+                precio: 7999.00,
+                imagen: "https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad",
+                tipo: "laptop",
+                marca: "asus",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 7,
+                nombre: "Laptop ROG Strix SCAR 18 (2025)",
+                descripcion: "Intel Core i9, 32GB RAM, 2TB SSD, RTX 5080, 18\" 2.5K, Windows 11",
+                precio: 21999.00,
+                imagen: "https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image",
+                tipo: "laptop",
+                marca: "asus",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 8,
+                nombre: "LAPTOP ASUS ROG STRIX G18",
+                descripcion: "Intel Core Ultra 9, 32GB RAM, 2TB SSD, RTX 5060 16GB, 18\" 2.5K, Windows 11",
+                precio: 18999.00,
+                imagen: "https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad",
+                tipo: "laptop",
+                marca: "asus",
+                especificaciones: ["gamer", "rtx", "ssd"]
+            },
+            {
+                id: 9,
+                nombre: "PC INTEL I5 14400F + RTX 3060",
+                descripcion: "Intel Core i5-14400F, 16GB DDR5, 500GB M.2, RTX 3060 12GB",
+                precio: 2699.00,
+                imagen: "imagenpc.png",
+                tipo: "pc",
+                marca: "msi",
+                especificaciones: ["gamer", "rtx"]
+            },
+            {
+                id: 10,
+                nombre: "PC RYZEN 5 7600X + RX 7600 XT",
+                descripcion: "AMD Ryzen 5 7600X, 16GB DDR5, 1TB M.2, RX 7600 XT 12GB",
+                precio: 3219.00,
+                imagen: "imagenpc2.png",
+                tipo: "pc",
+                marca: "amd",
+                especificaciones: ["gamer"]
+            },
+            {
+                id: 11,
+                nombre: "PC RYZEN 7 7700 + RX 7600 XT",
+                descripcion: "AMD Ryzen 7 7700, B450M, 16GB DDR4, 500GB M.2, RX 7600 XT",
+                precio: 3662.00,
+                imagen: "imagenpc3.png",
+                tipo: "pc",
+                marca: "amd",
+                especificaciones: ["gamer"]
+            }
+        ];
+
+        // VARIABLES GLOBALES
+        let productosMostrados = 8;
+        let productosFiltrados = [...todosLosProductos];
+
+        // FUNCIÓN PARA AGREGAR AL CARRITO
+        function agregarAlCarrito(nombre, precio, imagen) {
+            // Obtener el carrito actual de localStorage
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            // Verificar si el producto ya está en el carrito
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+
+            if (productoExistente) {
+                // Si ya existe, aumentar la cantidad
+                productoExistente.cantidad += 1;
+            } else {
+                // Si no existe, agregar nuevo producto
+                carrito.push({
+                    nombre: nombre,
+                    precio: precio,
+                    imagen: imagen,
+                    cantidad: 1
+                });
+            }
+
+            // Guardar en localStorage
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            // Mostrar notificación
+            alert(`Producto "${nombre}" agregado al carrito\nPrecio: S/ ${precio.toLocaleString('es-PE')}`);
+        }
+
+        // FUNCIÓN PARA RENDERIZAR PRODUCTOS
+        function renderizarProductos() {
+            const container = document.getElementById('productos-container');
+            const productosAMostrar = productosFiltrados.slice(0, productosMostrados);
+            
+            container.innerHTML = '';
+            
+            if (productosAMostrar.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">
+                        <i class="fas fa-search" style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;"></i>
+                        <h3 style="margin-bottom: 10px;">No se encontraron productos</h3>
+                        <p>Intenta con otros filtros o categorías</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            productosAMostrar.forEach(producto => {
+                const div = document.createElement('div');
+                div.className = 'IMG';
+                div.innerHTML = `
+                    <img src="${producto.imagen}" alt="${producto.nombre}" onerror="this.src='https://via.placeholder.com/240x180/0000ff/ffffff?text=Producto'">
+                    <p>${producto.nombre}</p>
+                    <p>${producto.descripcion}</p>
+                    <span class="precio">S/ ${producto.precio.toLocaleString('es-PE', {minimumFractionDigits: 2})}</span>
+                    <button class="btn-carrito" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio}, '${producto.imagen}')">
+                        <i class="fas fa-cart-plus"></i> Agregar al carrito
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // FUNCIÓN PARA FILTRAR PRODUCTOS
+        function filtrarProductos() {
+            const tipoFiltros = Array.from(document.querySelectorAll('input[name="tipo"]:checked')).map(cb => cb.value);
+            const marcaFiltros = Array.from(document.querySelectorAll('input[name="marca"]:checked')).map(cb => cb.value);
+            const precioFiltros = Array.from(document.querySelectorAll('input[name="precio"]:checked')).map(cb => cb.value);
+            const especificacionesFiltros = Array.from(document.querySelectorAll('input[name="especificaciones"]:checked')).map(cb => cb.value);
+            
+            productosFiltrados = todosLosProductos.filter(producto => {
+                // Filtrar por tipo
+                if (tipoFiltros.length > 0 && !tipoFiltros.includes(producto.tipo)) return false;
+                
+                // Filtrar por marca
+                if (marcaFiltros.length > 0 && !marcaFiltros.includes(producto.marca)) return false;
+                
+                // Filtrar por precio
+                if (precioFiltros.length > 0) {
+                    let pasaFiltroPrecio = false;
+                    precioFiltros.forEach(precioFiltro => {
+                        switch(precioFiltro) {
+                            case 'menor-2000':
+                                if (producto.precio < 2000) pasaFiltroPrecio = true;
+                                break;
+                            case '2000-5000':
+                                if (producto.precio >= 2000 && producto.precio <= 5000) pasaFiltroPrecio = true;
+                                break;
+                            case 'mayor-5000':
+                                if (producto.precio > 5000) pasaFiltroPrecio = true;
+                                break;
+                        }
+                    });
+                    if (!pasaFiltroPrecio) return false;
+                }
+                
+                // Filtrar por especificaciones
+                if (especificacionesFiltros.length > 0) {
+                    for (let espec of especificacionesFiltros) {
+                        if (!producto.especificaciones.includes(espec)) return false;
+                    }
+                }
+                
+                return true;
+            });
+            
+            productosMostrados = 8;
+            document.querySelector('.btn-ver-mas').style.display = 'block';
+            renderizarProductos();
+        }
+
+        // FUNCIÓN PARA LIMPIAR FILTROS
+        function limpiarFiltros() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            productosFiltrados = [...todosLosProductos];
+            productosMostrados = 8;
+            document.querySelector('.btn-ver-mas').style.display = 'block';
+            renderizarProductos();
+        }
+
+        // FUNCIÓN PARA CARGAR MÁS PRODUCTOS
+        function cargarMasProductos() {
+            productosMostrados += 4;
+            renderizarProductos();
+            
+            // Ocultar botón si ya mostramos todos
+            if (productosMostrados >= productosFiltrados.length) {
+                document.querySelector('.btn-ver-mas').style.display = 'none';
+            }
+        }
+
+        // FUNCIÓN PARA CARRUSEL
+        function initCarousel() {
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            
+            if (carousel && prevBtn && nextBtn) {
+                let currentIndex = 0;
+                const cards = document.querySelectorAll('.card');
+                const cardWidth = cards[0].offsetWidth + 20;
+
+                function updateCarousel() {
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < cards.length - 3) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
+            }
+        }
+
+        // INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', () => {
+            renderizarProductos();
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+.anuncio {
+    background: #0000ff; 
+    color: white; 
+    font-weight: bold;
+}
+
+.asistente-container, #resultados-recomendados {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.asistente-titulo h1 {
+    color: #1a2a47; 
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+}
+
+.paso h2 {
+    color: #00bcd4; 
+    border-bottom: 3px solid #00bcd4;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#paso1, #paso2, #paso3, #resultados-recomendados {
+    display: none;
+    opacity: 0;
+}
+.paso-siguiente {
+    position: absolute; 
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#mostrar-paso1:checked ~ .asistente-container #paso1 {
+    display: block;
+    opacity: 1;
+}
+
+#mostrar-paso2:checked ~ .asistente-container #paso1 {
+    display: none;
+    opacity: 0;
+}
+#mostrar-paso2:checked ~ .asistente-container #paso2 {
+    display: block;
+    opacity: 1;
+}
+
+#mostrar-paso3:checked ~ .asistente-container #paso2 {
+    display: none;
+    opacity: 0;
+}
+#mostrar-paso3:checked ~ .asistente-container #paso3 {
+    display: block;
+    opacity: 1;
+}
+
+#mostrar-resultados:checked ~ .asistente-container {
+    display: none;
+    opacity: 0;
+}
+#mostrar-resultados:checked ~ #resultados-recomendados {
+    display: block;
+    opacity: 1;
+}
+
+#resultados-recomendados .resultado-card {
+    display: none;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+#uso-estudios:checked ~ #marca-hp:checked ~ #pres-economico:checked ~ #mostrar-resultados:checked ~ #resultados-recomendados .resultado-card.estudios.hp.economico {
+    display: flex;
+}
+#uso-diseño:checked ~ #marca-apple:checked ~ #pres-avanzado:checked ~ #mostrar-resultados:checked ~ #resultados-recomendados .resultado-card.diseño.apple.avanzado {
+    display: flex;
+}
+
+#mostrar-resultados:checked ~ #resultados-recomendados .resultado-card:last-child {
+    display: block; 
+}
+
+
+.opciones-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+.opcion-btn {
+    flex-basis: calc(50% - 25px); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 120px;
+}
+.opcion-btn i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #1a2a47;
+}
+
+.opcion-btn:hover {
+    border-color: #ff5722; 
+    background-color: #fff3e0;
+    transform: translateY(-3px);
+}
+
+#paso2 .marca-btn, #paso3 .presupuesto-btn {
+    flex-basis: calc(33.33% - 25px);
+    font-weight: bold;
+    min-height: 80px;
+    padding: 20px;
+}
+
+.opcion-btn:active {
+    border-color: #00bcd4;
+    background-color: #e0f7fa;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    transform: scale(1.03);
+}
+
+#uso-estudios:checked ~ .asistente-container #paso1 label[for="uso-estudios"],
+#uso-trabajo:checked ~ .asistente-container #paso1 label[for="uso-trabajo"],
+#uso-diseño:checked ~ .asistente-container label[for="uso-diseño"],
+#uso-gaming:checked ~ .asistente-container label[for="uso-gaming"] {
+    border-color: #00bcd4;
+    background-color: #e0f7fa;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    transform: scale(1.03);
+}
+
+.finalizar-btn, .reiniciar-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #ff5722; 
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.finalizar-btn:hover, .reiniciar-btn:hover {
+    background-color: #e64a19;
+}
+
+.imagenes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.laptop-card {
+    flex-basis: calc(50% - 30px);
+    background-color: #fefefe;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.laptop-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    max-height: 200px;
+    object-fit: contain;
+}
+.ver-oferta-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #00bcd4; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.ver-oferta-btn:hover {
+    background-color: #00a0b8;
+}
+
+@media (max-width: 950px) {
+    .opcion-btn { flex-basis: 100%; }
+    .laptop-card { flex-basis: 100%; }
+}
+@media (max-width: 600px) {
+    .asistente-container { padding: 20px; margin: 20px auto; }
+    #paso2 .marca-btn, #paso3 .presupuesto-btn { flex-basis: 100%; }
+}

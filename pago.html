@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito - Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="pago.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="cabeza">
+        <p>Bienvenidos a la segunda plataforma de Tecnicom</p>
+    </div>
+    <header class="primero">
+        <div class="logotipo">
+            <img src="T.png" alt="logopagina">
+        </div>
+        <div class="segundo">
+            <input type="text" placeholder="Buscar">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="tercero">
+            <a href="#"><i class="fas fa-user"></i>Mi Cuenta <i class="fas fa-caret-down"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i>Mi Carrito</a>
+        </div>
+    </header>
+    <div class="propaganda">
+        <marquee>Aprovecha los descuentos que tenemos para ti</marquee>
+    </div>
+
+    <main class="cart-container">
+
+        <div class="cart-header">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a> / <a href="#">Carro</a>
+            </nav>
+            <h1 class="cart-title">Carro <span class="item-count">3 Productos (Ejemplo)</span></h1>
+        </div>
+
+        <div class="cart-wrapper">
+
+            <section class="cart-items-list">
+
+                <div class="cart-item">
+                    <div class="item-details">
+                        <div class="item-title-section">
+                            <span class="brand">S. Técnico ®</span>
+                            <p class="item-name">Servicio Técnico Armados</p>
+                            <p class="item-description">Servicio Armado PC Maestro – Ensamble, test y configuración</p>
+                        </div>
+                        <div class="item-visual">
+                            <img src="placa-base-ejemplo.png" alt="Servicio Técnico">
+                            <input type="number" value="1" min="1" class="item-qty">
+                        </div>
+                    </div>
+                    <div class="item-pricing">
+                        <p class="current-price">S/ 29.90</p>
+                        <p class="price-type">Precio</p>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-details">
+                        <div class="item-title-section">
+                            <span class="brand">Intel ®</span>
+                            <p class="item-name">CPU Intel s1700</p>
+                            <p class="item-description">Procesador Intel Core i5-14600K hasta 5.3GHz 24MB_Cache LGA1700
+                                Video Intel UHD s/cooler</p>
+                        </div>
+                        <div class="item-visual">
+                            <img src="cpu-intel-ejemplo.png" alt="Intel Core i5">
+                            <input type="number" value="1" min="1" class="item-qty">
+                        </div>
+                    </div>
+                    <div class="item-pricing">
+                        <p class="current-price discount">S/ 1,199.90</p>
+                        <p class="price-type">Precio con descuento</p>
+                        <p class="regular-price">S/ 1,749.90 <span class="regular-label">Precio regular</span></p>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-details">
+                        <div class="item-title-section">
+                            <span class="brand">Gigabyte ®</span>
+                            <p class="item-name">Placas Madres Intel s1700</p>
+                            <p class="item-description">Placa Madre Gigabyte Z790 AORUS ELITE AX (ATX, DDR5, Intel
+                                LGA1700)</p>
+                        </div>
+                        <div class="item-visual">
+                            <img src="placa-madre-ejemplo.png" alt="Gigabyte Z790">
+                            <input type="number" value="1" min="1" class="item-qty">
+                        </div>
+                    </div>
+                    <div class="item-pricing">
+                        <p class="current-price discount">S/ 1,499.90</p>
+                        <p class="price-type">Precio con descuento</p>
+                        <p class="regular-price">S/ 1,539.90 <span class="regular-label">Precio regular</span></p>
+                    </div>
+                </div>
+
+            </section>
+
+            <aside class="cart-summary">
+                <div class="summary-box">
+                    <h2>Total</h2>
+                    <div class="total-line">
+                        <p>Total</p>
+                        <p class="grand-total">S/ 8,929.00</p>
+                    </div>
+                    <button class="btn-volver">Volver Arma tu Pc</button>
+                    <a href="carrito.html" class="btn-pagar">Pagar</a>
+
+                    <p class="shipping-note"><i class="fas fa-truck"></i> El costo de envío se calculará al añadir la
+                        dirección</p>
+
+                    <div class="payment-methods">
+                        <h4>Medios de pago disponible</h4>
+                        <div class="methods-grid">
+                            <img src="visa-icon.png" alt="Visa" class="payment-icon">
+                            <img src="mastercard-icon.png" alt="Mastercard" class="payment-icon">
+                            <img src="powerpay-icon.png" alt="Powerpay" class="payment-icon">
+                            <img src="cuotalo-icon.png" alt="Cuótalo" class="payment-icon">
+                        </div>
+                        <p class="transfer-option"><i class="fas fa-exchange-alt"></i> Transferencia Electrónica</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                        <li><a href="#">Testimonios</a></li>
+                        <li><a href="#">Orden de Servicio</a></li>
+                        <li><a href="#">Libro de Reclamaciones</a></li>
+                        <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                        <li><a href="#">Regístrate</a></li>
+                        <li><a href="#">Recuperar Clave</a></li>
+                        <li><a href="#">Cómo Comprar</a></li>
+                        <li><a href="#">Boletas Electrónicas</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                        <li><a href="#">Nuestra Empresa</a></li>
+                        <li><a href="#">Servicio Postventa</a></li>
+                        <li><a href="#">Mapa Productos</a></li>
+                        <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                        <li><a href="#">Suscríbete</a></li>
+                        <li><a href="#">Tiendas</a></li>
+                        <li><a href="#">Seguir mi pedido</a></li>
+                        <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

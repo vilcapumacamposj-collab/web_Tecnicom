@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de Pago - Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="cabeza">
+        <p>Bienvenidos a la segunda plataforma de Tecnicom</p>
+    </div>
+    <header class="primero">
+        <div class="logotipo">
+            <a href="principal.html">
+                <img src="T.png" alt="logopagina">
+            </a>
+        </div>
+        <div class="segundo">
+            <input type="text" placeholder="Buscar">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="usuarios">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-user"></i> Cuenta usuario <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="Ingresar.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+                    <a href="registrar.html" class="dropdown-item"><i class="fas fa-user-plus"></i> Registrar</a>
+                </div>
+            </div>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Mi carrito de compras</a>
+        </div>
+    </header>
+    <div class="propaganda">
+        <marquee>Aprovecha los descuentos que tenemos para ti</marquee>
+    </div>
+
+    <div class="checkout-wrapper">
+        <main class="pago-container">
+            <a href="principal.html" class="volver-tienda"><i class="fas fa-arrow-left"></i> Volver a la tienda</a>
+            <div class="pago-steps-indicator">
+                <div class="step active" id="indicator1"><span>1</span> Iniciar Sesión</div>
+                <div class="step-line"></div>
+                <div class="step" id="indicator2"><span>2</span> Tipo de Envío</div>
+                <div class="step-line"></div>
+                <div class="step" id="indicator3"><span>3</span> Pago</div>
+            </div>
+
+            <section class="pago-step active" id="step1">
+                <h2>1. Inicia Sesión o Regístrate</h2>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" class="input-form" placeholder="Ingresa tu correo">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" class="input-form" placeholder="Ingresa tu contraseña">
+                </div>
+                <button class="btn-continuar" onclick="nextStep(2)">Continuar</button>
+            </section>
+
+            <section class="pago-step" id="step2">
+                <h2>2. Seleccionar tipo de entrega</h2>
+                <div class="opcion-entrega active">
+                    <input type="radio" name="entrega" id="retiro" checked>
+                    <label for="retiro">
+                        <strong>Retiro inmediato en tienda</strong>
+                        <span>Costo S/ 0.00</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="sucursal">Selecciona una sucursal</label>
+                    <select id="sucursal" class="input-form">
+                        <option>Mall Aventura Chiclayo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><strong>Identifica a la persona que retira</strong></label>
+                    <p class="info-retiro">Las compras realizadas con Powerpay sólo pueden ser retiradas por el titular
+                        de crédito.</p>
+                    <div class="opcion-persona">
+                        <input type="radio" name="persona-retira" id="misma-persona" checked>
+                        <label for="misma-persona">La misma persona que compra</label>
+                    </div>
+                    <div class="opcion-persona">
+                        <input type="radio" name="persona-retira" id="otra-persona">
+                        <label for="otra-persona">Otra persona retirará</label>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn-volver" onclick="prevStep(1)">Volver</button>
+                    <button class="btn-continuar" onclick="nextStep(3)">Continuar</button>
+                </div>
+            </section>
+
+            <section class="pago-step" id="step3">
+                <h2>3. Método de Pago</h2>
+                <div class="form-group">
+                    <label for="card">Número de Tarjeta</label>
+                    <input type="text" id="card" class="input-form" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiry">Fecha de Expiración</label>
+                        <input type="text" id="expiry" class="input-form" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="input-form" placeholder="***" maxlength="3">
+                    </div>
+                </div>
+                <div class="resumen">
+                    <h3>Resumen de Compra</h3>
+                    <p>Subtotal: <span>S/ 8,929.00</span></p>
+                    <p>Envío: <span>S/ 0.00</span></p>
+                    <hr>
+                    <p class="total">Total a pagar: <span>S/ 8,929.00</span></p>
+                </div>
+                <div class="button-group">
+                    <button class="btn-volver" onclick="prevStep(2)">Volver</button>
+                    <button class="btn-pagar" onclick="confirmarPago()">Pagar Ahora</button>
+                </div>
+            </section>
+        </main>
+
+        <aside class="carrito-sidebar">
+            <div class="carrito-header">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Carro</h3>
+                <span>10 Productos</span>
+            </div>
+            <div class="carrito-body">
+                <div class="producto-carrito">
+                    <img src="https://i.imgur.com/8Q5kF0f.png" alt="Servicio Técnico">
+                    <div class="producto-info">
+                        <p class="producto-nombre">S. Técnico ®</p>
+                        <p class="producto-desc">Servicio Técnico Armado...</p>
+                        <span class="producto-id">ID 1809</span>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button>-</button><input type="text" value="1"><button>+</button>
+                    </div>
+                    <button class="producto-remover">×</button>
+                </div>
+                <div class="producto-carrito">
+                    <img src="https://i.imgur.com/V7U5a7g.png" alt="Procesador Intel">
+                    <div class="producto-info">
+                        <p class="producto-nombre">Intel ®</p>
+                        <p class="producto-desc">CPU Intel s1700</p>
+                        <span class="producto-id">ID 2264</span>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button>-</button><input type="text" value="1"><button>+</button>
+                    </div>
+                    <button class="producto-remover">×</button>
+                </div>
+                <div class="producto-carrito">
+                    <img src="https://i.imgur.com/k9a5Zg5.png" alt="Placa Madre Asus">
+                    <div class="producto-info">
+                        <p class="producto-nombre">Asus ®</p>
+                        <p class="producto-desc">Placas Madres Intel s1700</p>
+                        <span class="producto-id">ID 2316</span>
+                    </div>
+                    <div class="producto-cantidad">
+                        <button>-</button><input type="text" value="1"><button>+</button>
+                    </div>
+                    <button class="producto-remover">×</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Orden de Servicio</a></li>
+                    <li><a href="#">Libro de Reclamaciones</a></li>
+                    <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                    <li><a href="#">Regístrate</a></li>
+                    <li><a href="#">Recuperar Clave</a></li>
+                    <li><a href="#">Cómo Comprar</a></li>
+                    <li><a href="#">Boletas Electrónicas</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Servicio Postventa</a></li>
+                    <li><a href="#">Mapa Productos</a></li>
+                    <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Suscríbete</a></li>
+                    <li><a href="#">Tiendas</a></li>
+                    <li><a href="#">Seguir mi pedido</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateIndicator(currentStep) {
+            document.querySelectorAll('.pago-steps-indicator .step').forEach((indicator, index) => {
+                indicator.classList.remove('active', 'completed');
+                if (index + 1 < currentStep) {
+                    indicator.classList.add('completed');
+                } else if (index + 1 === currentStep) {
+                    indicator.classList.add('active');
+                }
+            });
+        }
+
+        function nextStep(step) {
+            document.querySelectorAll('.pago-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            updateIndicator(step);
+        }
+
+        function prevStep(step) {
+            document.querySelectorAll('.pago-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            updateIndicator(step);
+        }
+
+        function confirmarPago() {
+            alert('✅ Pago realizado con éxito. ¡Gracias por tu compra!');
+        }
+    </script>
+    <script SameSite="None; Secure" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+    <script>
+        // INSTRUCCIONES IMPORTANTES:
+        // 1. Entra a tu cuenta en https://landbot.io
+        // 2. Crea tu bot o entra a uno existente.
+        // 3. Ve a la pestaña "Share" > "Embed in a website" > "Livechat".
+        // 4. Copia la URL que aparece en 'configUrl' y pégala abajo donde dice "PEGAR_AQUI_TU_URL_DE_LANDBOT"
+
+        var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://landbot.online/v3/H-3242269-TSIQQY7NZ24ZT5Q3/index.json',
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="texto">
+        <p>Bienvenido a Tecnicom</p>
+    </div>
+    <header class="encabezado">
+        <div class="logopng">
+            <img src="T.png" alt="loguito">
+        </div>
+
+        <!-- BUSCADOR MEJORADO -->
+        <div class="buscar-contenedor">
+            <div class="buscar">
+                <input type="text" id="buscador" placeholder="Buscar productos, marcas, categorías..."
+                    autocomplete="off">
+                <button onclick="buscarProductos()"><i class="fas fa-search"></i></button>
+            </div>
+            <!-- Sugerencias estilo Google -->
+            <div id="sugerencias" class="sugerencias-box"></div>
+        </div>
+        <div class="usuarios">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-user"></i> Cuenta usuario <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="Ingresar.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+                    <a href="registrar.html" class="dropdown-item"><i class="fas fa-user-plus"></i> Registrar</a>
+                </div>
+            </div>
+            <a href="carrito.html"><i class="fas fa-shopping-cart"></i> Mi carrito de compras</a>
+        </div>
+    </header>
+
+    <div class="anuncio">
+        <marquee>¡Jueves de descuentazos! Aprovecha las super ofertas que tiene Tecnicom para ti en variedades de
+            productos seleccionador. No pierdas esta oportunidad, ¡te esperamos!</marquee>
+    </div>
+
+    <nav class="menu">
+        <div class="regla">
+            <a href="categorias.html" class="btn-categorias">
+                <i class="fas fa-bars"></i> Todas las categorías
+            </a>
+            <a href="armaPC.html">Arma tu PC</a>
+            <a href="primeraLaptop.html">Compra tu primera laptop</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- CONTENEDOR DE RESULTADOS DE BÚSQUEDA (oculto por defecto) -->
+    <div id="resultados-busqueda" class="resultados-busqueda" style="display: none;">
+        <div class="resultados-header">
+            <h2 id="titulo-resultados">Resultados de búsqueda</h2>
+            <button onclick="ocultarResultados()" class="btn-cerrar-resultados">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+        </div>
+        <div id="productos-resultados" class="imagenes">
+            <!-- Los productos aparecerán aquí dinámicamente -->
+        </div>
+        <div id="sin-resultados" style="display: none; text-align: center; padding: 50px;">
+            <h3>No se encontraron productos</h3>
+            <p>Intenta con otras palabras clave como: "Laptop", "Monitor", "RAM", "Impresora"</p>
+            <div class="sugerencias-busqueda">
+                <strong>Sugerencias:</strong>
+                <span class="tag-sugerencia" onclick="buscarSugerencia('Laptop')">Laptop</span>
+                <span class="tag-sugerencia" onclick="buscarSugerencia('Monitor')">Monitor</span>
+                <span class="tag-sugerencia" onclick="buscarSugerencia('RAM')">RAM</span>
+                <span class="tag-sugerencia" onclick="buscarSugerencia('Impresora')">Impresora</span>
+                <span class="tag-sugerencia" onclick="buscarSugerencia('PC Gamer')">PC Gamer</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL (se oculta cuando hay búsqueda) -->
+    <div id="contenido-principal">
+        <div class="Contenedor">
+            <div class="pasa">
+                <div class="imagen1">
+                    <img src="imagen1.png" alt="primero">
+                </div>
+                <div class="imagen2">
+                    <img src="imagen2.png" alt="segundo">
+                </div>
+                <div class="imagen3">
+                    <img src="imagen3.png" alt="tercero">
+                </div>
+            </div>
+        </div>
+
+        <div class="titulow">
+            <p>PRODUCTOS DESTACADOS</p>
+        </div>
+
+        <div class="imagenes">
+            <!-- Productos destacados originales -->
+            <div class="producto-link" data-nombre="Laptop Gamer Asus TUF F15" data-categoria="Laptops"
+                data-precio="5559.90">
+                <div class="IMG">
+                    <img src="https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000"
+                        alt="imagen 1">
+                    <p>Laptop Gamer Asus TUF F15<br><strong>s/5.559.90</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Laptop Gamer Asus TUF F15', 5559.90, 'https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <!-- NUEVOS PRODUCTOS DE CATEGORÍAS -->
+            <div class="producto-link" data-nombre="Laptop Gamer HP Victus 15" data-categoria="Laptops"
+                data-precio="3299.00">
+                <div class="IMG">
+                    <img src="https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000"
+                        alt="Laptop HP Victus">
+                    <p>Laptop Gamer HP Victus 15 - AMD Ryzen 7<br><strong>s/3,299.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Laptop Gamer HP Victus 15', 3299.00, 'https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Laptop ASUS Zenbook Pro Duo" data-categoria="Laptops"
+                data-precio="4599.00">
+                <div class="IMG">
+                    <img src="https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg"
+                        alt="Laptop ASUS Zenbook">
+                    <p>Laptop ASUS Zenbook Pro Duo<br><strong>s/4,599.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Laptop ASUS Zenbook Pro Duo', 4599.00, 'https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Laptop HP 15-fd0253la Intel Core i5" data-categoria="Laptops"
+                data-precio="2199.00">
+                <div class="IMG">
+                    <img src="https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg"
+                        alt="Laptop HP i5">
+                    <p>Laptop HP Intel Core i5<br><strong>s/2,199.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Laptop HP 15-fd0253la Intel Core i5', 2199.00, 'https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004/492050-piU4EbyZw1jAFqxz.jpg')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+
+            <!-- PC Gamer Completas -->
+            <div class="producto-link" data-nombre="PC INTEL I5 14400F + RTX 3060" data-categoria="PC Gamer"
+                data-precio="2699.00">
+                <div class="IMG">
+                    <img src="imagenpc.png" alt="PC Gamer Intel">
+                    <p>PC INTEL I5 14400F + RTX 3060<br><strong>s/2,699.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('PC INTEL I5 14400F + RTX 3060', 2699.00, 'imagenpc.png')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="PC RYZEN 5 7600X + RX 7600 XT" data-categoria="PC Gamer"
+                data-precio="3219.00">
+                <div class="IMG">
+                    <img src="imagenpc2.png" alt="PC Gamer Ryzen">
+                    <p>PC RYZEN 5 7600X + RX 7600 XT<br><strong>s/3,219.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('PC RYZEN 5 7600X + RX 7600 XT', 3219.00, 'imagenpc2.png')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="PC RYZEN 7 7700 + RX 7600 XT" data-categoria="PC Gamer"
+                data-precio="3662.00">
+                <div class="IMG">
+                    <img src="imagenpc3.png" alt="PC Gamer Ryzen 7">
+                    <p>PC RYZEN 7 7700 + RX 7600 XT<br><strong>s/3,662.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('PC RYZEN 7 7700 + RX 7600 XT', 3662.00, 'imagenpc3.png')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+
+
+            <!-- Componentes de PC -->
+            <div class="producto-link" data-nombre="Disco SSD 500GB Kingston NV3" data-categoria="Componentes"
+                data-precio="299.90">
+                <div class="IMG">
+                    <img src="https://m.media-amazon.com/images/I/71NfMZKkpQL._UF894,1000_QL80_.jpg" alt="SSD Kingston">
+                    <p>Disco SSD 500GB Kingston NV3<br><strong>S/ 299.90</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Disco SSD 500GB Kingston NV3', 299.90, 'https://m.media-amazon.com/images/I/71NfMZKkpQL._UF894,1000_QL80_.jpg')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Memoria RAM DDR4 16GB 3200MT/s" data-categoria="Componentes"
+                data-precio="249.90">
+                <div class="IMG">
+                    <img src="https://elektra.vtexassets.com/arquivos/ids/16876173/image-78280499f4424c2ab11b5e051a479e61.jpg?v=638914231606300000"
+                        alt="RAM Kingston FURY">
+                    <p>Memoria RAM DDR4 16GB 3200MT/s<br><strong>S/ 249.90</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Memoria RAM DDR4 16GB 3200MT/s', 249.90, 'https://elektra.vtexassets.com/arquivos/ids/16876173/image-78280499f4424c2ab11b5e051a479e61.jpg?v=638914231606300000')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Intel Core i9 14900K" data-categoria="Procesadores"
+                data-precio="2799.00">
+                <div class="IMG">
+                    <img src="https://www.impacto.com.pe/storage/products/lg/175458445473396.webp" alt="Intel i9">
+                    <p>Intel Core i9 14900K<br><strong>S/ 2,799.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Intel Core i9 14900K', 2799.00, 'https://www.impacto.com.pe/storage/products/lg/175458445473396.webp')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Monitor Gamer MASTER G 27" data-categoria="Monitores"
+                data-precio="619.00">
+                <div class="IMG">
+                    <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/4709/PMP20000358152/full_image-1.jpeg"
+                        alt="Monitor Gamer">
+                    <p>Monitor Gamer MASTER G 27" 180Hz<br><strong>S/ 619.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Monitor Gamer MASTER G 27', 619.00, 'https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/4709/PMP20000358152/full_image-1.jpeg')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <!-- Tarjetas de Video -->
+            <div class="producto-link" data-nombre="TARJETA DE VIDEO GIGABYTE RTX5050 8GB"
+                data-categoria="Tarjetas de Video" data-precio="1299.00">
+                <div class="IMG">
+                    <img src="https://www.infotec.com.pe/102286-large_default/tarjeta-de-video-gigabyte-rtx5050-8gb-low-profile-128-bit-gddr6-gv-n5050oc-8gl-.jpg"
+                        alt="RTX 5050">
+                    <p>Gigabyte RTX5050 8GB<br><strong>S/ 1,299.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('TARJETA DE VIDEO GIGABYTE RTX5050 8GB', 1299.00, 'https://www.infotec.com.pe/102286-large_default/tarjeta-de-video-gigabyte-rtx5050-8gb-low-profile-128-bit-gddr6-gv-n5050oc-8gl-.jpg')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="TARJETA DE VIDEO MSI RTX 5080 16GB"
+                data-categoria="Tarjetas de Video" data-precio="5899.00">
+                <div class="IMG">
+                    <img src="https://coolboxpe.vtexassets.com/arquivos/ids/450084-1200-1200?v=638826873036900000&width=1200&height=1200&aspect=true"
+                        alt="RTX 5080">
+                    <p>MSI RTX 5080 16GB<br><strong>S/ 5,899.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('TARJETA DE VIDEO MSI RTX 5080 16GB', 5899.00, 'https://coolboxpe.vtexassets.com/arquivos/ids/450084-1200-1200?v=638826873036900000&width=1200&height=1200&aspect=true')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+
+            <!-- Fuentes de Poder -->
+            <div class="producto-link" data-nombre="Fuente MSI MAG A1000GL 1000W" data-categoria="Fuentes de Poder"
+                data-precio="649.00">
+                <div class="IMG">
+                    <img src="https://media.falabella.com/falabellaPE/147868003_01/w=1500,h=1500,fit=pad"
+                        alt="Fuente MSI">
+                    <p>Fuente MSI MAG 1000W 80 Plus<br><strong>S/ 649.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Fuente MSI MAG A1000GL 1000W', 649.00, 'https://media.falabella.com/falabellaPE/147868003_01/w=1500,h=1500,fit=pad')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+
+
+            <!-- Periféricos -->
+            <div class="producto-link" data-nombre="Teclado Gamer Logitech G513 Carbon" data-categoria="Periféricos"
+                data-precio="499.00">
+                <div class="IMG">
+                    <img src="https://www.impacto.com.pe/storage/products/md/173827617965837.webp"
+                        alt="Teclado Logitech">
+                    <p>Teclado Logitech G513 Carbon<br><strong>S/ 499.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Teclado Gamer Logitech G513 Carbon', 499.00, 'https://www.impacto.com.pe/storage/products/md/173827617965837.webp')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Mouse Gamer Logitech G502 Lightspeed" data-categoria="Periféricos"
+                data-precio="380.00">
+                <div class="IMG">
+                    <img src="https://www.printonerperu.com/wp-content/uploads/2021/10/Mouse-Gamer-Logitech-G502-lightspeed-inalambrico-recargable-01.jpg"
+                        alt="Mouse Logitech">
+                    <p>Mouse Logitech G502 Lightspeed<br><strong>S/ 380.00</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Mouse Gamer Logitech G502 Lightspeed', 380.00, 'https://www.printonerperu.com/wp-content/uploads/2021/10/Mouse-Gamer-Logitech-G502-lightspeed-inalambrico-recargable-01.jpg')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+
+
+            <!-- Impresoras -->
+            <div class="producto-link" data-nombre="Impresora Epson L3110" data-categoria="Impresoras"
+                data-precio="649.90">
+                <div class="IMG">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_797276-MLA79650172261_092024-O.webp" alt="EPSON L3110">
+                    <p>Impresora Epson L3110<br><strong>S/ 649.90</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Impresora Epson L3110', 649.90, 'https://http2.mlstatic.com/D_NQ_NP_797276-MLA79650172261_092024-O.webp')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+
+            <div class="producto-link" data-nombre="Impresora Epson L3250" data-categoria="Impresoras"
+                data-precio="699.90">
+                <div class="IMG">
+                    <img src="https://img.pacifiko.com/PROD/resize/1/500x500/NmVhNTk5MW_355.png" alt="EPSON L3250">
+                    <p>Impresora Epson L3250<br><strong>S/ 699.90</strong></p>
+                    <a href="javascript:void(0)"
+                        onclick="agregarAlCarritoDesdeLista('Impresora Epson L3250', 699.90, 'https://img.pacifiko.com/PROD/resize/1/500x500/NmVhNTk5MW_355.png')"
+                        class="btn-agregar"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                    <li><a href="atencionCliente.html
+                        ">Atencion al Cliente</a></li>
+                    
+                </ul>
+                <ul>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Orden de Servicio</a></li>
+                    <li><a href="#">Libro de Reclamaciones</a></li>
+                    <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                    <li><a href="registrar.html">Regístrate</a></li>
+                    <li><a href="#">Recuperar Clave</a></li>
+                    <li><a href="#">Cómo Comprar</a></li>
+                    <li><a href="#">Boletas Electrónicas</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Servicio Postventa</a></li>
+                    <li><a href="#">Mapa Productos</a></li>
+                    <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Suscríbete</a></li>
+                    <li><a href="#">Tiendas</a></li>
+                    <li><a href="#">Seguir mi pedido</a></li>
+                    <li><a href="garantia.html">Garantía</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL PARA CONFIRMAR AGREGADO AL CARRITO -->
+    <div id="modal-carrito" class="modal-carrito">
+        <div class="modal-contenido">
+            <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
+            <h3><i class="fas fa-check-circle"></i> Producto agregado</h3>
+            <p id="modal-mensaje"></p>
+            <div class="modal-acciones">
+                <button onclick="cerrarModal()" class="btn-seguir">Seguir comprando</button>
+                <button onclick="irAlCarrito()" class="btn-carrito-modal">Ver carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="busqueda.js"></script>
+    <script SameSite="None; Secure" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+    <script>
+        // INSTRUCCIONES IMPORTANTES:
+        // 1. Entra a tu cuenta en https://landbot.io
+        // 2. Crea tu bot o entra a uno existente.
+        // 3. Ve a la pestaña "Share" > "Embed in a website" > "Livechat".
+        // 4. Copia la URL que aparece en 'configUrl' y pégala abajo donde dice "PEGAR_AQUI_TU_URL_DE_LANDBOT"
+
+        var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://landbot.online/v3/H-3242269-TSIQQY7NZ24ZT5Q3/index.json',
+        });
+    </script>
+</body>
+
+</html>

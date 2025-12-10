@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección de Pedidos - Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="asistente.css">
+    <link rel="stylesheet" href="primeraLaptop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="texto">
+        <p>Bienvenido a Tecnicom</p>
+    </div>
+    <header class="encabezado">
+        <div class="logopng">
+            <img src="T.png" alt="loguito">
+        </div>
+        <div class="buscar">
+            <input type="text" placeholder="Buscar aqui">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="usuarios">
+            <a href="#"><i class="fas fa-user"></i>Cuenta usuario <i class="fas fa-caret-down"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i>Mi carrito de compras</a>
+        </div>
+    </header>
+    <div class="anuncio">
+        <marquee>¡Jueves de descuentazos! Aprovecha las super ofertas que tiene Tecnicom para ti en variedades de
+            productos seleccionador. No pierdas esta oportunidad, ¡te esperamos!</marquee>
+    </div>
+
+    <div class="asistente-controles" style="display: none;">
+        <input type="radio" id="prod-laptop" name="producto" value="laptop">
+        <input type="radio" id="prod-monitor" name="producto" value="monitor">
+        <input type="radio" id="prod-teclado" name="producto" value="teclado">
+        <input type="radio" id="recojo-personal" name="recojo" value="personal">
+        <input type="radio" id="recojo-tercero" name="recojo" value="tercero">
+        <input type="radio" id="recojo-delivery" name="recojo" value="delivery">
+        <input type="radio" id="recojo-provincia" name="recojo" value="provincia">
+    </div>
+
+    <input type="radio" id="mostrar-paso1" name="control-pasos" checked style="display: none;">
+    <input type="radio" id="mostrar-paso2" name="control-pasos" style="display: none;">
+    <input type="radio" id="mostrar-paso3" name="control-pasos" style="display: none;">
+    <input type="radio" id="mostrar-resultados" name="control-pasos" style="display: none;">
+
+
+    <main class="asistente-container">
+        <div class="asistente-titulo">
+            <h1>Generar Nuevo Pedido</h1>
+            <p>Completa los pasos para cotizar y finalizar tu compra.</p>
+        </div>
+
+        <div class="paso" id="paso1">
+            <h2>1. Producto y Cantidad</h2>
+            <div class="opciones-container step-content-form">
+
+                <div class="form-group full-width">
+                    <label for="select-producto">Escoge el Producto (Dropdown):</label>
+                    <select id="select-producto" class="select-field">
+                        <option value="none">-- Seleccionar --</option>
+                        <option value="laptop" data-radio="prod-laptop">Laptop Gamer G20 (S/ 3,500.00)</option>
+                        <option value="monitor" data-radio="prod-monitor">Monitor Curvo 27" (S/ 850.00)</option>
+                        <option value="teclado" data-radio="prod-teclado">Teclado Mecánico RGB (S/ 280.00)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width search-bar-wrapper">
+                    <label for="search-producto">O busca por nombre/código:</label>
+                    <div class="custom-search-input">
+                        <input type="text" id="search-producto" placeholder="Escribe el nombre del producto...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="form-group half-width">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" value="1" min="1" max="10" placeholder="1">
+                </div>
+
+                <div class="form-group half-width">
+                    <label>Stock Disponible:</label>
+                    <p class="stock-info">¡Quedan 5 unidades! (Ficticio)</p>
+                </div>
+
+                <div class="form-group full-width precio-resumen">
+                    <h3>Precio Total Estimado: <span class="precio-final">S/ 3,500.00</span></h3>
+                    <p class="nota-precio">Este precio es una estimación. Se actualizará en el resumen final.</p>
+                </div>
+
+                <label for="mostrar-paso2" class="finalizar-btn">Continuar al Recojo/Envío</label>
+            </div>
+        </div>
+
+        <div class="paso" id="paso2">
+            <h2>2. Opciones de Recojo/Envío</h2>
+            <div class="opciones-container">
+                <label for="recojo-personal" class="opcion-btn" data-recojo="personal">
+                    <i class="fas fa-store"></i> <span>Recojo Personal (Titular)</span>
+                </label>
+                <label for="recojo-tercero" class="opcion-btn" data-recojo="tercero">
+                    <i class="fas fa-user-friends"></i> <span>Recojo por Tercero</span>
+                </label>
+                <label for="recojo-delivery" class="opcion-btn" data-recojo="delivery">
+                    <i class="fas fa-shipping-fast"></i> <span>Delivery (Lima Metropolitana)</span>
+                </label>
+                <label for="recojo-provincia" class="opcion-btn" data-recojo="provincia">
+                    <i class="fas fa-truck"></i> <span>Envío a Provincia</span>
+                </label>
+
+                <label for="mostrar-paso3" class="finalizar-btn full-width">Continuar al Resumen</label>
+            </div>
+        </div>
+
+        <div class="paso" id="paso3">
+            <h2>3. Resumen y Finalización</h2>
+            <div class="opciones-container step-content-form">
+
+                <div class="resumen-detalle full-width">
+                    <h3>Detalle de su Pedido</h3>
+                    <p><strong>Producto:</strong> Laptop Gamer G20</p>
+                    <p><strong>Cantidad:</strong> 1</p>
+                    <p><strong>Método de Recojo:</strong> Recojo Personal (Titular)</p>
+                    <p class="costo-envio"><strong>Costo de Recojo/Envío:</strong> S/ 0.00 (Ficticio)</p>
+                    <hr>
+                    <h3 class="total-final">Total a Pagar: <span class="precio-final-total">S/ 3,500.00</span></h3>
+                </div>
+
+                <button class="finalizar-btn" disabled>Proceder al Pago <i class="fas fa-lock"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <div id="resultados-recomendados" class="resultados-container" style="display: none;">
+    </div>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Orden de Servicio</a></li>
+                    <li><a href="#">Libro de Reclamaciones</a></li>
+                    <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                    <li><a href="#">Regístrate</a></li>
+                    <li><a href="#">Recuperar Clave</a></li>
+                    <li><a href="#">Cómo Comprar</a></li>
+                    <li><a href="#">Boletas Electrónicas</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Servicio Postventa</a></li>
+                    <li><a href="#">Mapa Productos</a></li>
+                    <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Suscríbete</a></li>
+                    <li><a href="#">Tiendas</a></li>
+                    <li><a href="#">Seguir mi pedido</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escoge Componentes - Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="armaPC.css">
+    <link rel="stylesheet" href="escoge.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="cabeza">
+        <p>Bienvenidos a la segunda plataforma de Tecnicom</p>
+    </div>
+    <header class="primero">
+        <div class="logotipo">
+            <img src="T.png" alt="logopagina">
+        </div>
+        <div class="segundo">
+            <input type="text" placeholder="Buscar">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="tercero">
+            <a href="#"><i class="fas fa-user"></i>Mi Cuenta <i class="fas fa-caret-down"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i>Mi Carrito</a>
+        </div>
+    </header>
+    <div class="propaganda">
+        <marquee>Aprovecha los descuentos que tenemos para ti</marquee>
+    </div>
+
+    <main class="configurator-main">
+        <div class="configurator-title-bar">
+            <h1>Arma tu PC_</h1>
+            <i class="fas fa-microchip chip-icon"></i>
+        </div>
+
+        <section class="configurator-steps">
+
+            <div class="step-item open">
+                <div class="step-header" data-step="1">
+                    <span class="step-number">1</span>
+                    <h3>Filtro por Tienda</h3>
+                    <i class="fas fa-minus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <label for="select-tienda">Selecciona la tienda donde retiraras tu PC Armado</label>
+                    <select id="select-tienda" class="select-field">
+                        <option value="">- Seleccione Tienda -</option>
+                        <option value="lima">Tienda Lima Centro</option>
+                    </select>
+
+                    <div class="withdrawal-info">
+                        <h4>¿Qué necesitas llevar para poder retirar?</h4>
+                        <p class="warning-text">⚠️ Si eres quien realizó la compra o fuiste individualizado como la
+                            persona que retira, necesitas:</p>
+                        <ul>
+                            <li><span class="bullet-point">•</span> Documento de identidad o RUC de empresa registrado
+                                al momento de la compra.</li>
+                            <li><span class="bullet-point">•</span> Debes llevar la **Boleta / Factura** o confirmación
+                                de compra (e-mail).</li>
+                        </ul>
+                        <p class="note-text">
+                            Nota: Los productos pueden ser retirados sólo por quien realizó la compra o bien por quién
+                            fue individualizado como la persona que retira. Siempre se deberá firmar un comprobante de
+                            recibo conforme.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="2">
+                    <span class="step-number">2</span>
+                    <h3>Indique Servicio de Armado</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <label for="select-servicio">Servicio de Armado</label>
+                    <select id="select-servicio" class="select-field">
+                        <option value="">Selecciona Servicio de Armado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="3">
+                    <span class="step-number">3</span>
+                    <h3>Seleccionar piezas básicas</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <div id="intel-filters" class="platform-specific-filters" style="display: none;">
+                        <h4>Generación Intel</h4>
+                        <div class="filter-group">
+                            <label><input type="radio" name="generation" value="14th"> 14th Gen (LGA 1700)</label>
+                            <label><input type="radio" name="generation" value="13th"> 13th Gen (LGA 1700)</label>
+                        </div>
+                    </div>
+
+                    <div id="amd-filters" class="platform-specific-filters" style="display: none;">
+                        <h4>Generación AMD</h4>
+                        <div class="filter-group">
+                            <label><input type="radio" name="generation" value="AM5"> AM5 (Ryzen 7000+)</label>
+                            <label><input type="radio" name="generation" value="AM4"> AM4 (Ryzen 5000/3000)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-cpu">Procesador (CPU) * Obligatorio</label>
+                        <select id="select-cpu" class="select-field">
+                            <option value="">Selecciona Procesador (CPU)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-motherboard">Placa Madre * Obligatorio</label>
+                        <select id="select-motherboard" class="select-field">
+                            <option value="">Selecciona Placa Madre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-ram">1ra Memoria Ram * Obligatorio</label>
+                        <select id="select-ram" class="select-field">
+                            <option value="">Selecciona 1ra Memoria Ram</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-gpu">1ra Tarjeta Grafica</label>
+                        <select id="select-gpu" class="select-field">
+                            <option value="">Selecciona 1ra Tarjeta Grafica</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-red">Tarjeta de Red</label>
+                        <select id="select-red" class="select-field">
+                            <option value="">Selecciona Tarjeta de Red</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="4">
+                    <span class="step-number">4</span>
+                    <h3>Almacenamiento</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <div class="form-group">
+                        <label for="select-m2">1ra Unidad M.2 * Obligatorio</label>
+                        <select id="select-m2" class="select-field">
+                            <option value="">Selecciona 1ra Unidad M.2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-ssd">1ra Unidad SSD * Obligatorio</label>
+                        <select id="select-ssd" class="select-field">
+                            <option value="">Selecciona 1ra Unidad SSD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-hdd">1er Disco Duro * Obligatorio</label>
+                        <select id="select-hdd" class="select-field">
+                            <option value="">Selecciona 1er Disco Duro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-optic">Unidad Óptica</label>
+                        <select id="select-optic" class="select-field">
+                            <option value="">Selecciona Unidad Óptica</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="5">
+                    <span class="step-number">5</span>
+                    <h3>Seleccionar Gabinete</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <div class="form-group">
+                        <label for="select-case">Gabinete * Obligatorio</label>
+                        <select id="select-case" class="select-field">
+                            <option value="">Selecciona Gabinete</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="6">
+                    <span class="step-number">6</span>
+                    <h3>Energía y Refrigeración</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <div class="form-group">
+                        <label for="select-psu">Fuente de Poder</label>
+                        <select id="select-psu" class="select-field">
+                            <option value="">Selecciona Fuente de Poder</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-fan">Ventilador</label>
+                        <select id="select-fan" class="select-field">
+                            <option value="">Selecciona Ventilador</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-cooler">Refrigeración CPU</label>
+                        <select id="select-cooler" class="select-field">
+                            <option value="">Selecciona Refrigeración CPU</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-paste">Pasta Térmica</label>
+                        <select id="select-paste" class="select-field">
+                            <option value="">Selecciona Pasta Térmica</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="7">
+                    <span class="step-number">7</span>
+                    <h3>Sistema Operativo y Software</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <div class="form-group">
+                        <label for="select-os">Sistema Operativo</label>
+                        <select id="select-os" class="select-field">
+                            <option value="">Selecciona Sistema Operativo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-software">Software</label>
+                        <select id="select-software" class="select-field">
+                            <option value="">Selecciona Software</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-digital">Software Digital</label>
+                        <select id="select-digital" class="select-field">
+                            <option value="">Selecciona Software Digital</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-antivirus">Antivirus</label>
+                        <select id="select-antivirus" class="select-field">
+                            <option value="">Selecciona Antivirus</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header" data-step="8">
+                    <span class="step-number">8</span>
+                    <h3>Periféricos y accesorios</h3>
+                    <i class="fas fa-plus toggle-icon"></i>
+                </div>
+                <div class="step-content">
+                    <div class="form-group">
+                        <label for="select-monitor">Monitor</label>
+                        <select id="select-monitor" class="select-field">
+                            <option value="">Selecciona Monitor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-keyboard-mouse">Teclado y Mouse</label>
+                        <select id="select-keyboard-mouse" class="select-field">
+                            <option value="">Selecciona Teclado y Mouse</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-mouse">Mouse</label>
+                        <select id="select-mouse" class="select-field">
+                            <option value="">Selecciona Mouse</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-keyboard">Teclado</label>
+                        <select id="select-keyboard" class="select-field">
+                            <option value="">Selecciona Teclado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-headset">Audífono</label>
+                        <select id="select-headset" class="select-field">
+                            <option value="">Selecciona Audífono</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-desk">Escritorio</label>
+                        <select id="select-desk" class="select-field">
+                            <option value="">Selecciona Escritorio</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-chair">Silla</label>
+                        <select id="select-chair" class="select-field">
+                            <option value="">Selecciona Silla</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-wheel">Volante</label>
+                        <select id="select-wheel" class="select-field">
+                            <option value="">Selecciona Volante</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary-section">
+            <h3>Resumen de Compra</h3>
+            <div class="summary-details">
+                <div class="secure-buy">
+                    <i class="fas fa-lock"></i>
+                    <span>Compra 100% Segura</span>
+                </div>
+                <div class="total-box">
+                    <div class="price-info">
+                        <p>Precio Total</p>
+                        <p class="total-amount">S/ 0.00</p>
+                    </div>
+                    <button class="continue-purchase-btn" disabled>Continuar Compra</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                        <li><a href="#">Testimonios</a></li>
+                        <li><a href="#">Orden de Servicio</a></li>
+                        <li><a href="#">Libro de Reclamaciones</a></li>
+                        <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                        <li><a href="#">Regístrate</a></li>
+                        <li><a href="#">Recuperar Clave</a></li>
+                        <li><a href="#">Cómo Comprar</a></li>
+                        <li><a href="#">Boletas Electrónicas</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                        <li><a href="#">Nuestra Empresa</a></li>
+                        <li><a href="#">Servicio Postventa</a></li>
+                        <li><a href="#">Mapa Productos</a></li>
+                        <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                        <li><a href="#">Suscríbete</a></li>
+                        <li><a href="#">Tiendas</a></li>
+                        <li><a href="#">Seguir mi pedido</a></li>
+                        <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        async function populateSelect(selectElementId, componentType, currentPlatform, requiredSocket = null, requiredRamType = null) {
+            const selectElement = document.getElementById(selectElementId);
+            selectElement.innerHTML = `<option value="">Cargando ${componentType}...</option>`;
+
+            let url = `inventario.php?platform=${currentPlatform}&type=${componentType}`;
+
+            if (requiredSocket) {
+                url += `&socket=${requiredSocket}`;
+            }
+            if (requiredRamType) {
+                url += `&ram_type=${requiredRamType}`;
+            }
+
+            try {
+                const response = await fetch(url);
+                const products = await response.json();
+
+                selectElement.innerHTML = `<option value="">Selecciona ${componentType}</option>`;
+
+                if (products && products.length > 0 && !products.error) {
+                    products.forEach(product => {
+                        const option = document.createElement('option');
+                        option.value = product.id;
+
+                        option.dataset.socket = product.socket;
+                        option.dataset.ramtype = product.ram_type;
+
+                        option.textContent = `(${product.id}) ${product.nombre} (S/ ${parseFloat(product.precio).toFixed(2)})`;
+                        selectElement.appendChild(option);
+                    });
+                } else {
+                    selectElement.innerHTML = `<option value="">No hay ${componentType} compatibles</option>`;
+                }
+            } catch (error) {
+                console.error(`Error al cargar ${componentType}:`, error);
+                selectElement.innerHTML = `<option value="">Error de conexión / Datos no encontrados</option>`;
+            }
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const platform = urlParams.get('marca');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const stepHeaders = document.querySelectorAll('.step-header');
+
+            document.getElementById('select-cpu').addEventListener('change', (event) => {
+                const selectedOption = event.target.options[event.target.selectedIndex];
+                const requiredSocket = selectedOption.dataset.socket;
+
+                document.getElementById('select-ram').innerHTML = `<option value="">Selecciona 1ra Memoria Ram</option>`;
+
+                if (requiredSocket) {
+                    populateSelect('select-motherboard', 'Placa Madre', platform, requiredSocket, null);
+                }
+            });
+
+            document.getElementById('select-motherboard').addEventListener('change', (event) => {
+                const selectedOption = event.target.options[event.target.selectedIndex];
+                const finalRamType = selectedOption.dataset.ramtype;
+
+                if (finalRamType) {
+                    populateSelect('select-ram', 'Memoria Ram', platform, null, finalRamType);
+                }
+            });
+
+            function loadInitialComponents(currentPlatform) {
+                populateSelect('select-cpu', 'Procesador', currentPlatform);
+
+                populateSelect('select-motherboard', 'Placa Madre', currentPlatform);
+                populateSelect('select-ram', 'Memoria Ram', currentPlatform);
+
+                const intelFilters = document.getElementById('intel-filters');
+                const amdFilters = document.getElementById('amd-filters');
+                const cpuLabel = document.querySelector('.step-item[data-step="3"] label[for="select-cpu"]');
+
+                if (currentPlatform === 'Intel') {
+                    intelFilters.style.display = 'block';
+                    amdFilters.style.display = 'none';
+                    cpuLabel.innerHTML = 'Procesador Intel * Obligatorio';
+                } else if (currentPlatform === 'AMD') {
+                    intelFilters.style.display = 'none';
+                    amdFilters.style.display = 'block';
+                    cpuLabel.innerHTML = 'Procesador AMD * Obligatorio';
+                }
+            }
+
+            function filterStepContent(currentPlatform) {
+                loadInitialComponents(currentPlatform);
+            }
+
+            const toggleStep = (header, forceOpen = false) => {
+                const stepItem = header.parentElement;
+                const toggleIcon = header.querySelector('.toggle-icon');
+                const content = stepItem.querySelector('.step-content');
+
+                const isCurrentlyOpen = stepItem.classList.contains('open');
+
+                document.querySelectorAll('.step-item').forEach(item => {
+                    item.classList.remove('open');
+                    item.querySelector('.step-content').style.maxHeight = '0';
+                    const icon = item.querySelector('.toggle-icon');
+                    if (icon) {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    }
+                });
+
+                if (forceOpen || !isCurrentlyOpen) {
+                    stepItem.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    toggleIcon.classList.remove('fa-plus');
+                    toggleIcon.classList.add('fa-minus');
+
+                    if (header.dataset.step === '3' && platform) {
+                        filterStepContent(platform);
+                    }
+                }
+            };
+
+            stepHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    toggleStep(header);
+                });
+            });
+
+            const initialHeader = document.querySelector('.step-item[data-step="1"] .step-header');
+            if (initialHeader) {
+                toggleStep(initialHeader, true);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

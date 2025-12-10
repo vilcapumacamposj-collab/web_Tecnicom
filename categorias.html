@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="categorias.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="texto">
+        <p>Bienvenido a Tecnicom</p>
+    </div>
+
+    <header class="encabezado">
+        <div class="logopng">
+            <a href="principal.html">
+                <img src="T.png" alt="loguito">
+            </a>
+        </div>
+        <div class="buscar">
+            <input type="text" placeholder="Buscar aquí">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="usuarios">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-user"></i> Cuenta usuario <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="Ingresar.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+                    <a href="registrar.html" class="dropdown-item"><i class="fas fa-user-plus"></i> Registrar</a>
+                </div>
+            </div>
+            <a href="carrito.html"><i class="fas fa-shopping-cart"></i> Mi carrito de compras</a>
+        </div>
+    </header>
+
+    <div class="anuncio">
+        <marquee>¡Jueves de descuentazos! Aprovecha las super ofertas que tiene Tecnicom para ti en variedades de
+            productos seleccionados. ¡No pierdas esta oportunidad, te esperamos!</marquee>
+    </div>
+    <nav class="menu">
+        <div class="regla">
+            <a href="categorias.html" class="btn-categorias">
+                <i class="fas fa-bars"></i> Todas las categorías
+            </a>
+            <a href="armaPC.html">Arma tu PC</a>
+            <a href="primeraLaptop.html">Compra tu primera laptop</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="separador"></div>
+
+    <div class="Contenedor">
+        <div class="pasa">
+            <div class="imagen1">
+                <img src="imagen1.png" alt="primero">
+            </div>
+            <div class="imagen2">
+                <img src="imagen2.png" alt="segundo">
+            </div>
+            <div class="imagen3">
+                <img src="imagen3.png" alt="tercero">
+            </div>
+        </div>
+    </div>
+
+    <div class="separador1"></div>
+
+    <div class="titulow">
+        <p>PRODUCTOS DESTACADOS</p>
+    </div>
+    <div class="main-content">
+        <!-- 📌 Sidebar de Categorías -->
+        <aside class="sidebar">
+            <h3>CATEGORÍAS</h3>
+            <ul>
+                <li><i class="fas fa-desktop"></i> Computadoras</li>
+                <li><i class="fas fa-desktop"></i> Monitores</li>
+                <li><i class="fas fa-microchip"></i> Procesadores</li>
+                <li><i class="fas fa-server"></i> Placas Madres</li>
+                <li><i class="fas fa-memory"></i> Memoria RAM</li>
+                <li><i class="fas fa-hdd"></i> Almacenamiento</li>
+                <li><i class="fas fa-video"></i> Tarjetas de Video</li>
+                <li><i class="fas fa-fan"></i> Refrigeración</li>
+                <li><i class="fas fa-box"></i> Case</li>
+                <li><i class="fas fa-bolt"></i> Fuente de Poder</li>
+                <li><i class="fas fa-keyboard"></i> Periféricos</li>
+            </ul>
+        </aside>
+
+        <!-- 📌 Productos -->
+        <div class="productos">
+            <div class="IMG">
+                <img src="https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000"
+                    alt="imagen 1">
+                <p>Laptop Gamer Hp Victus 15-fb3020la, amd Ryzen 7, 16gb Ram, 512gb Ssd, nvidia Geforce Rtx 3050,
+                    fhd,15.6"</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop Gamer Hp Victus', 3.299, 'https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <div class="IMG">
+                <img src="https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg"
+                    alt="imagen 2">
+                <p>Laptop ASUS Zenbook Pro Duo</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop ASUS Zenbook Pro Duo', 4.599, 'https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg"
+                    alt="imagen 3">
+                <p>Laptop Hp 15-fd0253la Intel Core i5-1334u 8gb Ram 512gb Ssd 15.6"</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop Hp 15-fd0253la Intel Core i5', 2.199, 'https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <div class="IMG">
+                <img src="https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82" alt="imagen 4">
+                <p>Gamer Intel Core I5 Rtx3050 24gb 512gb Ssd Loq 12° Gen 15.6" Fhd 144 Hz</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 4.789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659"
+                    alt="imagen 5">
+                <p>LAPTOP ASUS ROG STRIX G615JMR-RV165W INTEL CORE I7 16GB RAM 512GB SSD 16” RTX 5060</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 4.999, 'https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad" alt="imagen 6">
+                <p>Laptop ROG Strix G16 R9 16GB RAM 1TB SSD RTX 5060 8GB W11</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 7.999, 'https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image"
+                    alt="imagen 8">
+                <p>Laptop ROG Strix SCAR 18 (2025) G835LX-SA119W</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 21.999, 'https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad" alt="imagen 9">
+                <p>LAPTOP ASUS ROG STRIX G18 CORE ULTRA 9-275HX 32GB RAM 2TB SSD RTX 5080 16GB 18″ 2.5K, WIN11</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 21.999, 'https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section class="seleccion">
+        <h2>Nuestra mejor selección para ti</h2>
+        <div class="carousel-container">
+            <button class="prev">&#10094;</button>
+            <div class="carousel" id="carousel">
+                <div class="card">
+                    <img src="imagenpc.png" alt="PC 1">
+                    <p class="titulo">PC INTEL I5 14400F + H610M + 16GB DDR5 + 500GB M.2 + RTX 3060</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/2,699.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC INTEL I5 14400F + RTX 3060', 2699, 'imagenpc.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc2.png" alt="PC 2">
+                    <p class="titulo">PC RYZEN 5 7600X + B650M + 16GB DDR5 + 500GB M.2 + RX 7600 XT</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/3,219.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC RYZEN 5 7600X + RX 7600 XT', 3219, 'imagenpc2.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc3.png" alt="PC 3">
+                    <p class="titulo">PC RYZEN 7 7700 + B650M + 16GB DDR5 + 500GB M.2 + RX 7600 XT</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/3,662.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC RYZEN 7 7700 + RX 7600 XT', 3662, 'imagenpc3.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc4.png" alt="PC 4">
+                    <p class="titulo">PC INTEL I5 14400F + B760M + 32GB DDR5 + 1TB M.2 + RTX 5070</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/4,799.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC INTEL I5 14400F + RTX 5070', 4799, 'imagenpc4.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="imagenpc5.png" alt="PC 5">
+                    <p class="titulo">PC RYZEN 7 7700X + B650M + 32GB DDR5 + 1TB M.2 + RX 7600 XT</p>
+                    <p class="stock"><i class="fas fa-check"></i> En Stock</p>
+                    <p class="precio">S/5,038.00</p>
+                    <button class="btn-carrito"
+                        onclick="agregarAlCarrito('PC RYZEN 7 7700X + RX 7600 XT', 5038, 'imagenpc5.png')">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+            </div>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(nombre, precio, imagen) {
+            // Obtener el carrito actual de localStorage
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            // Verificar si el producto ya está en el carrito
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+
+            if (productoExistente) {
+                // Si ya existe, aumentar la cantidad
+                productoExistente.cantidad += 1;
+            } else {
+                // Si no existe, agregar nuevo producto
+                carrito.push({
+                    nombre: nombre,
+                    precio: precio,
+                    imagen: imagen,
+                    cantidad: 1
+                });
+            }
+
+            // Guardar en localStorage
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+
+
+            // Redirigir a la página del carrito
+            window.location.href = 'carrito.html';
+        }
+
+        // El resto de tu JavaScript existente...
+        document.addEventListener("DOMContentLoaded", () => {
+            const categorias = document.querySelectorAll(".sidebar ul li");
+            const contenedorProductos = document.querySelector(".productos");
+            const seccionSeleccion = document.querySelector(".seleccion");
+            const contenedorCarrusel = document.querySelector(".Contenedor");
+            const tituloProductos = document.querySelector(".titulow");
+            const contenedorMain = document.querySelector(".main-content");
+
+            // 🔙 Botón "Volver a la página inicial"
+            const btnVolver = document.createElement("button");
+            btnVolver.textContent = "⬅️ Volver a la página inicial";
+            btnVolver.classList.add("btn-volver");
+            contenedorMain.after(btnVolver);
+
+            // 🧩 Productos por categoría (simplificado)
+            const productos = {
+                "Computadoras": [
+                    { img: "https://mipclista.com/img/p/9/0/5/0/9050.jpg", nombre: "PC Gamer Haku Red Plus Ryzen 5 8600G", precio: "S/ 2,399" },
+                    { img: "https://media.falabella.com/falabellaPE/114488217_01/w=1500,h=1500,fit=pad", nombre: "Computadora PC GAMER RYZEN 7 5700G 16GB 512GB Monitor 27", precio: "S/ 2,479" },
+                    { img: "https://mipclista.com/img/p/9/1/3/8/9138.jpg", nombre: "PC Gamer Draco Black Blue Intel Core i9 Ultra 285K", precio: "S/ 13,299" },
+                    { img: "https://mipclista.com/img/p/8/3/2/3/8323.jpg", nombre: "PC Gamer K-PLUS Orange Core i7 14700F 14th", precio: "S/ 4,699" },
+                    { img: "https://oechsle.vteximg.com.br/arquivos/ids/22548707-1000-1000/COMPUTADORA-PC-GAMER-DRACO-RGB-PLUS-CORE-I9-12900KF-32GB-1TB-24-RTX5060-8GB-MI-PC-LISTA-MIPCLISTA.jpg?v=638961607575630000", nombre: "COMPUTADORA PC GAMER DRACO RGB PLUS CORE I9 12900KF 32GB 1TB 24 RTX5060 8GB ", precio: "S/ 6,499" },
+                    { img: "https://mipclista.com.pe/9136-home_default/pc-gamer-hero-pink-core-i7-13700f-13th.jpg", nombre: "PC Gamer Hero RGB Core ULTRA 7 265KF", precio: "S/ 10,000" },
+                    { img: "https://plazavea.vteximg.com.br/arquivos/ids/31522012-450-450/imageUrl_1.jpg?v=638858612765900000", nombre: "PC GAMER FALKOR TANK RGB RYZEN 9 9950X 32GB DDR5 1TB 27 RTX5070TI 16GB", precio: "6,899" },
+                    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQnNLVfhBMKcCSaywsbadP3PTwQOar1EWDmYdqULgQOoBe-VQMJ0I9MudB7ZI-lc-oL4&usqp=CAU", nombre: "PC Gamer Draco Red Core I7 8th", precio: "S/ 2,299" },
+                ],
+                "Monitores": [
+                    { img: "https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/4709/PMP20000358152/full_image-1.jpeg", nombre: "MONITOR GAMER MASTER G 27'' 180Hz", precio: "S/ 619" },
+                    { img: "https://www.lg.com/content/dam/channel/wcms/pe/images/monitores/32gs95uv-b/gallery/ultragear-32gs95uv-b-gallery-02-2010.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800", nombre: "Monitor gaming UltraGear™ OLED 32'' 4K", precio: "S/ 3,999" },
+                    { img: "https://www.lg.com/content/dam/channel/wcms/pe/images/monitores/27gs95qe-b_awf_espr_pe_c/gallery/ultragear-27gs95qe-galley-02-2010.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800", nombre: "Monitor Gamer OLED UltraGear™ 27''", precio: "S/ 2,499" },
+                    { img: "https://media.falabella.com/falabellaPE/140073618_01/w=1500,h=1500,fit=pad", nombre: "MONITOR GAMER CURVO Teros TE-3411G 34 180HZ 1MS 2K", precio: "S/ 1,299" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/474212-1200-1200?v=638887150287430000&width=1200&height=1200&aspect=true", nombre: "Monitor plano gamer Asus VG249Q3R 23.8 Panel IPS, FHD (1920 x 1080), 180Hz, 1ms, entradas DisplayPort/HDMI", precio: "S/ 599" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/489177-1200-1200?v=638984891944830000&width=1200&height=1200&aspect=true", nombre: "Monitor gamer plano Xiaomi A27QI 27, pantalla 2K ultra nítida, 100Hz, 1ms, Fast IPS, negro", precio: "S/ 1,599" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/373373-1200-1200?v=638550131417070000&width=1200&height=1200&aspect=true", nombre: "Monitor gamer 31.5 Asrock PG32QF2B Panel VA, QHD (2560 x 1440), 165Hz, 1ms, entradas HDMI/ DisplayPort", precio: "S/ 619" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/483436-1200-1200?v=638914020966830000&width=1200&height=1200&aspect=true", nombre: "Monitor Teros TE-2415S 23.8 IPS, resolución FHD, 120Hz, tiempo de respuesta de 1ms, conectividad HDMI y VGA", precio: "S/ 300" }
+                ],
+                "Procesadores": [
+                    { img: "https://www.impacto.com.pe/storage/products/lg/175458445473396.webp", nombre: "Intel Core i9 14900K", precio: "S/ 2,799" },
+                    { img: "https://www.impacto.com.pe/storage/products/lg/17387884735165.webp", nombre: "Intel Core i7 13700k", precio: "S/ 2,099" },
+                    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNU5fYIaKACJr5Em4SsVjOPoZO4GI64Hw0fg&s", nombre: "Intel Core i5 14600k", precio: "S/ 899" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/347292-1200-1200?v=638440847753570000&width=1200&height=1200&aspect=true", nombre: "Procesador Intel Core i5-13400F, 2.5GHZ, 6+4 cores, LGA1700", precio: "S/ 959" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/17387901962069.webp", nombre: "Procesador Amd Ryzen 7 7700x 4.5ghz Hasta 5.4ghz 32mb Am5, 8 Nucleos", precio: "S/ 1,299" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/174198531943800.webp", nombre: "Procesador Amd Ryzen 9 9950x3d 4.3ghz Hasta 5.7ghz, 128mb Am5, 16 Nucleos, Radeon Graphics", precio: "S/ 2,999" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/371424-1200-1200?v=638538902141070000&width=1200&height=1200&aspect=true", nombre: "Procesador AMD Ryzen 5 7600X 6 cores, 5.3Ghz, AM5", precio: "S/ 759" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/355281-1200-1200?v=638470000554700000&width=1200&height=1200&aspect=true", nombre: "Procesador AMD Ryzen 5 8600G (IA), 5Ghz, 6 cores, AM5, 65W", precio: "S/ 999" }
+                ],
+                "Placas Madres": [
+                    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldYLBjQT9Ecsbu2U9FTzlDIm7mSoWppZxZA&s", nombre: "Placa Madre ASUS Prime Z790-P", precio: "S/ 599" },
+                    { img: "https://asset.msi.com/resize/image/global/product/product_3_20180716112125_5b4c0f3535ada.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png", nombre: "Placa madre MSI B450 GAMING PLUS", precio: "S/ 999" },
+                    { img: "https://cdn.memorykings.pe/files/2023/01/18/346382-MK033747D.jpg", nombre: "PLACA ASROCK Z790 PG SONIC", precio: "S/ 1,136" },
+                    { img: "https://www.mink.com.ar/qloud/ryr/fotos/24793-0.jpg", nombre: "PLACA MADRE GIGABYTE B650M D3HP AM5 DDR5", precio: "S/ 429" },
+                    { img: "https://www.mink.com.ar/qloud/ryr/fotos/25788-0.jpg", nombre: "PLACA MADRE ASUS B840M-A AM5 DDR5", precio: "S/ 999" },
+                    { img: "https://www.mink.com.ar/qloud/ryr/fotos/24794-0.jpg", nombre: "PLACA MADRE MSI B650M PZ AM5 DDR5 (BACK CONNECTORS)", precio: "S/ 1,289" },
+                    { img: "https://www.mink.com.ar/qloud/ryr/fotos/25828-0.jpg", nombre: "PLACA MADRE GIGABYTE X870 EAGLE WIFI7 AM5 DDR5 (M.2 GEN5)", precio: "S/ 1,129" },
+                    { img: "https://www.mink.com.ar/qloud/ryr/fotos/25672-0.jpg", nombre: "PLACA MADRE GIGABYTE B650 AORUS ELITE AX V2 WIFI AM5 DDR5", precio: "S/ 1,699" }
+                ],
+                "Memoria RAM": [
+                    { img: "https://www.impacto.com.pe/storage/products/md/173868453832535.webp", nombre: "MEMORIA RAM Xpg Ddr4 16gb Spectrix", precio: "S/ 190" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/173860643993951.webp", nombre: "MEMORIA RAM Acer Ddr4 16gb Predator", precio: "S/ 240" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/173836105911792.webp", nombre: "MEMORIA RAM Kingston Fury 32gb", precio: "S/ 136" },
+                    { img: "https://www.infotec.com.pe/60539-thickbox_default/memoria-ram-kingston-8gb3200mhz-ddr4-fury-beast-kf432c16bb8-negro.jpg", nombre: "MEMORIA RAM KINGSTON 8GB/3200MHZ DDR4 FURY BEAST ( KF432C16BB/8 ) NEGRO", precio: "S/ 120" },
+                    { img: "https://www.infotec.com.pe/67448-large_default/memoria-ram-kingston-8gb6000mhz-ddr5-fury-beast-kf560c40bb-8-negro.jpg", nombre: "MEMORIA RAM KINGSTON 8GB/6000MHZ DDR5 FURY BEAST ( KF560C40BB-8 ) NEGRO", precio: "S/ 159" },
+                    { img: "https://www.infotec.com.pe/74528-thickbox_default/memoria-ram-kingston-16gb5200mhz-ddr5-fury-beast-kf552c40bw-16-blanco.jpg", nombre: "MEMORIA RAM KINGSTON 16GB/5200MHZ DDR5 FURY BEAST (KF552C40BW-16) BLANCO", precio: "S/ 319" },
+                    { img: "https://www.infotec.com.pe/104175-large_default/memoria-ram-teamgroup-16gb6000mhz-vulcan-ddr5-flbd516g000hc38a01-black.jpg", nombre: "MEMORIA RAM TEAMGROUP 16GB/6000MHZ VULCAN DDR5 ( FLBD516G000HC38A01 ) BLACK", precio: "S/ 329" },
+                    { img: "https://www.infotec.com.pe/104174-large_default/memoria-ram-teamgroup-16gb6000mhz-ddr5-delta-rgb-ff3d516g6000hc37a01-led-rgbnegro.jpg", nombre: "MEMORIA RAM TEAMGROUP 16GB/6000MHZ DDR5 DELTA RGB ( FF3D516G6000HC37A01 ) LED-RGB|NEGRO", precio: "S/ 359" }
+                ],
+                "Almacenamiento": [
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/348036-1200-1200?v=638443042225200000&width=1200&height=1200&aspect=true", nombre: "SSD Kingston 1TB NVMe", precio: "S/ 199" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/379438-1200-1200?v=638584788458300000&width=1200&height=1200&aspect=true", nombre: "Disco Duro 2TB Seagate", precio: "S/ 289" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/175468784526135.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Msi 500gb Nvme Spatium M450, 2280 (sm450n500) 3600mb/s", precio: "S/ 199" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/1738351687725.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Kingston 2tb Nvme Nv3, 2280 (snv3s/2000g)     ", precio: "S/ 599" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/176313524260059.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Biwin X570 Pro 1tb, 2280 (bx570dn01tb-rgx) 14000mb/s", precio: "S/ 499" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/173834006542600.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Adata 1tb Nvme Legend 900, 2280 (sleg-900-1tcs) Hasta 7000mb/s De Lectura Con Discipador", precio: "S/ 315" }
+                ],
+                "Tarjetas de Video": [
+                    { img: "https://supertec.com.pe/img-apps/productos/TARJETA-DE-VIDEO-GIGABYTE-RADEON-RX9070XT-16GB-GAMING-OC-GDDR6-256BIT-1.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RADEON RX9070XT 16GB GAMING OC GDDR6 256BIT", precio: "S/ 2,999" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/450084-1200-1200?v=638826873036900000&width=1200&height=1200&aspect=true", nombre: "TARJETA DE VIDEO Msi NVIDIA RTX 5080 VENTUS 3X 16GB GDDR7, PCI5.0", precio: "S/ 5,899" },
+                    { img: "https://www.infotec.com.pe/102286-large_default/tarjeta-de-video-gigabyte-rtx5050-8gb-low-profile-128-bit-gddr6-gv-n5050oc-8gl-.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RTX5050 8GB LOW PROFILE 128 BIT GDDR6 ( GV-N5050OC-8GL )", precio: "S/ 1,299" },
+                    { img: "https://supertec.com.pe/img-apps/productos/T.-VIDEO-GIGABYTE-RADEON-RX7600-8GB-GAMING-OC-GDDR6-128BIT-1.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RADEON RX7600 8GB GAMING OC GDDR6 128BIT", precio: "S/ 899" },
+                    { img: "https://supertec.com.pe/img-apps/productos/T_VIDEO-XFX-RADEON-SWFT210--RX6600-8GB-GDRR6-1.jpg", nombre: "TARJETA DE VIDEO XFX RADEON SWFT210 RX6600 8GB GDRR6", precio: "S/ 949" },
+                    { img: "https://www.infotec.com.pe/102686-thickbox_default/tarjeta-de-video-gigabyte-rtx-5060-eagle-max-0c-8gb-gddr7-gv-n5060eaglemax-oc-8gd-128-bit.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RTX 5060 EAGLE MAX 0C 8GB GDDR7 (GV-N5060EAGLEMAX OC-8GD) 128 BIT", precio: "S/ 1,449" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/469564-1200-1200?v=638875888610300000&width=1200&height=1200&aspect=true", nombre: "TARJETA DE VIDEO Zotac gaming GeForce RTX 5080 AMP Extreme Infinity, 256 bits, 16 GB", precio: "S/ 6,199" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/379456-1200-1200?v=638584867430600000&width=1200&height=1200&aspect=true", nombre: "TARJETA DE VIDEO Msi GeForce Nvidia RTX 3050 6GB GDDR6 Ventus 2X OC", precio: "S/ 570" }
+                ],
+                "Refrigeración": [
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/396086-1200-1200?v=638652121884170000&width=1200&height=1200&aspect=true", nombre: "Cooler procesador Antryx Mirage 550 Plus, ARGB, fan 130mm x2", precio: "S/ 259" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372754-1200-1200?v=638545387822230000&width=1200&height=1200&aspect=true", nombre: "Cooler para procesador Antryx Mirage 410 ARGB", precio: "S/ 109" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/335287-1200-1200?v=638392041870970000&width=1200&height=1200&aspect=true", nombre: "Sistema de enfriamiento líquido Triton Infinity 240, negro", precio: "S/ 439" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/335295-1200-1200?v=638392043235800000&width=1200&height=1200&aspect=true", nombre: "Sistema de enfriamiento líquido Triton Infinity 360, negro", precio: "S/ 549" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/193827-1200-1200?v=637720740527130000&width=1200&height=1200&aspect=true", nombre: "Sistema de refrigeración líquida MSI MPG Coreliquid K360, 360mm, 3-FAN, pantalla LCD 2.4", precio: "S/ 1,299" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/193813-1200-1200?v=637720719366730000&width=1200&height=1200&aspect=true", nombre: "Sistema de refrigeración líquida MSI MPG Coreliquid K240, ARGB, 240 mm, 2 FAN, pantalla LCD 2.4", precio: "S/ 999" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/17526026616716.webp", nombre: "Sistema De Enfriamiento Liquido Deepcool Mystique 360 (r-lx750-bkdsnmp-g-1) 3 Ventiladores, 360mm, Con Pantalla 2.8, Led Argb", precio: "S/ 699" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/176100520621875.webp", nombre: "Sistema De Enfriamiento Liquido Asus Prime Lc 360 Argb (prime-lc-360-argb)", precio: "S/ 442" }
+                ],
+                "Case": [
+                    { img: "https://media.falabella.com/falabellaPE/139345663_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER BLANCO ASUS GT502 GAMING ATX USB 8R LADO VIDRIO TEMPLADO", precio: "S/ 948" },
+                    { img: "https://media.falabella.com/falabellaPE/145286140_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER Gabinete De Computadora Ds900 Atx De Vidrio Templado Negro", precio: "S/ 500" },
+                    { img: "https://media.falabella.com/falabellaPE/130901083_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER Cybertel Killer Cbx 5016 4 Fan Rgb Doble Ring 3.0 Gabinete", precio: "S/ 199" },
+                    { img: "https://media.falabella.com/falabellaPE/146323727_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER TEROS TE-1314G, Mid Tower, USB 3.0 USB 2.0 ventilador ARGB", precio: "S/ 399" },
+                    { img: "https://media.falabella.com/falabellaPE/123491330_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER TEROS TE1163W ARGB USB 3.0 MID TOWER", precio: "S/ 269" },
+                    { img: "https://gamingpower.pe/cdn/shop/files/2_ed55ef8f-fb87-4db4-afba-b76cef8ae95c.jpg?v=1722794442&width=823", nombre: "CASE GAMER MSI MINI MAG PANO M100R 4FAN 5R ARGB BLANCO MICRO ATX USB3.2", precio: "S/ 449" },
+                    { img: "https://gamingpower.pe/cdn/shop/files/1_6f3ef619-8395-4f85-90c7-2f959abf2f46.jpg?v=1757781280&width=823", nombre: "CASE GAMER NEGRO ATX TE-1174N MID TOWER ARGB SIN FUENTE LADO VIDRIO", precio: "S/ 189" },
+                    { img: "https://gamingpower.pe/cdn/shop/files/1_6f3ef619-8395-4f85-90c7-2f959abf2f46.jpg?v=1757781280&width=1946", nombre: "CASE GAMER NEGRO ATX TE-1174N MID TOWER ARGB SIN FUENTE LADO VIDRIO", precio: "S/ 180" }
+                ],
+
+                "Fuente de Poder": [
+                    { img: "https://media.falabella.com/falabellaPE/147868003_01/w=1500,h=1500,fit=pad", nombre: "FUENTE DE PODER MSI MAG A1000GL ATX 1000W Eficiencia 80 PLUS", precio: "S/ 649" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372734-1200-1200?v=638545210171300000&width=1200&height=1200&aspect=true", nombre: "FUENTE DE PODER Seasonic A12 500W, 80 Plus White", precio: "S/ 249" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372718-1200-1200?v=638545205884930000&width=1200&height=1200&aspect=true", nombre: "FUENTE DE PODER Antryx Kirin Gold Evo II 1000W, 80 Plus Gold, modular ATV3.0, Pcie 5.0", precio: "S/ 759" },
+                    { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372722-1200-1200?v=638545207335600000&width=1200&height=1200&aspect=true", nombre: "FUENTE DE PODER Antryx Kirin Gold Evo II 1200W, 80 Plus Gold, modular ATV3.0, Pcie 5.0", precio: "S/ 899" },
+                    { img: "https://promart.vteximg.com.br/arquivos/ids/9709336-380-380/image-32c9e175ad954e0399ed6900eb0dff31.jpg?v=638993406270470000", nombre: "FUENTE DE PODER DOMINATING ATX 3.1 POWER 750W NGDP GOLD 1ST PLAYER", precio: "S/ 469" },
+                    { img: "https://promart.vteximg.com.br/arquivos/ids/9316232-380-380/imageUrl_1.jpg?v=638932299814400000", nombre: "FUENTE DE PODER Antryx B500 V3 de 500W - Eficiencia, Rendimiento y Fiabilidad para PC Gamer", precio: "S/ 129" },
+                    { img: "https://promart.vteximg.com.br/arquivos/ids/9709335-380-380/image-6c82b8a7fb4e4f70b2db763076bdd87d.jpg?v=638993406266100000", nombre: "FUENTE DE PODER AR 80 PLUS GOLD 650W 1ST PLAYER", precio: "S/ 500" },
+                    { img: "https://promart.vteximg.com.br/arquivos/ids/9316281-380-380/imageUrl_1.jpg?v=638932299869000000", nombre: "FUENTE DE PODER Antec Atom G850 850W 80 Plus Gold, alta eficiencia y rendimiento superior", precio: "S/ 309" }
+                ],
+                "Periféricos": [
+                    { img: "https://www.impacto.com.pe/storage/products/md/173827617965837.webp", nombre: "TECLADO GAMER Logitech G513 Carbon (920-009322) Mecanico, Switch Brown, Led Rgb, Negro", precio: "S/ 499" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/17399137755965.webp", nombre: "TECLADO GAMER  Gaming Mecanico Mk Zigra Evo (amk-900kre-sp) Mecanico, Switch Red, Led Rgb", precio: "S/ 199" },
+                    { img: "https://www.impacto.com.pe/storage/products/md/17603746199583.webp", nombre: "TECLADO GAMER  Aula Win68he Max 65% Magnetico (au-w68hem3en7) Mecanico, Switch Magnetico Wing Chun, Color Negro, Plomo Y Amarillo", precio: "S/ 249" },
+                    { img: "https://oechsle.vteximg.com.br/arquivos/ids/14900752/image-1995f609e8a745768898abbc130ca388.jpg?v=638282361660630000", nombre: "Mouse Logitech M585 Bluetooth usb unifying – Negro", precio: "S/ 109" },
+                    { img: "https://www.printonerperu.com/wp-content/uploads/2021/10/Mouse-Gamer-Logitech-G502-lightspeed-inalambrico-recargable-01.jpg", nombre: "Mouse Gamer Logitech G502 lightspeed inalámbrico recargable", precio: "S/ 380" },
+                    { img: "https://compudel.com.pe/22788-medium_default/microfono-kit-gaming-fifine-a6t-usb-black-rgb.jpg", nombre: "MICROFONO KIT GAMING FIFINE ( A6T ) USB BLACK RGB", precio: "S/ 189" },
+                    { img: "https://hiraoka.com.pe/media/catalog/product/1/3/131965-2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=560&width=700&canvas=700:560", nombre: "Audífonos Gamer con Micrófono Antryx Raider Plus", precio: "S/ 170" },
+                    { img: "https://gamecenterperu.com/wp-content/uploads/2023/11/GC01762.jpg.webp", nombre: "Audifonos Gamer Logitech G635 Lightsync Black", precio: "S/ 519" }
+                ],
+            };
+
+            categorias.forEach(item => {
+                item.addEventListener("click", () => {
+                    const categoria = item.textContent.trim();
+
+                    // Ocultar elementos principales
+                    contenedorCarrusel.style.display = "none";
+                    tituloProductos.style.display = "none";
+                    seccionSeleccion.style.display = "none";
+
+                    // Limpiar productos existentes
+                    contenedorProductos.innerHTML = "";
+
+                    // Crear título de categoría
+                    const titulo = document.createElement("h2");
+                    titulo.textContent = `Productos de ${categoria}`;
+                    titulo.style.textAlign = "center";
+                    titulo.style.margin = "20px 0";
+                    titulo.style.color = "#0000ff";
+                    titulo.style.fontSize = "1.5em";
+                    contenedorProductos.appendChild(titulo);
+
+                    // Mostrar productos de la categoría
+                    if (productos[categoria]) {
+                        productos[categoria].forEach(p => {
+                            const div = document.createElement("div");
+                            div.classList.add("IMG");
+                            div.innerHTML = `
+                                <img src="${p.img}" alt="${p.nombre}">
+                                <p>${p.nombre}</p>
+                                <p class="precio">${p.precio}</p>
+                                <button class="btn-carrito" onclick="agregarAlCarrito('${p.nombre}', ${p.precio.replace('S/ ', '').replace(',', '')}, '${p.img}')">
+                                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                                </button>
+                            `;
+                            contenedorProductos.appendChild(div);
+                        });
+                    } else {
+                        contenedorProductos.innerHTML += `<p style="padding:20px; text-align:center; grid-column: 1 / -1;">No hay productos disponibles para esta categoría.</p>`;
+                    }
+
+                    // Mostrar botón volver
+                    btnVolver.style.display = "block";
+                    contenedorProductos.scrollIntoView({ behavior: "smooth" });
+                });
+            });
+
+            // 🔙 Botón volver
+            btnVolver.addEventListener("click", () => {
+                // Mostrar elementos principales
+                contenedorCarrusel.style.display = "block";
+                tituloProductos.style.display = "block";
+                seccionSeleccion.style.display = "block";
+
+                // Restaurar productos originales
+                contenedorProductos.innerHTML = `
+                            <div class="IMG">
+                <img src="https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000"
+                    alt="imagen 1">
+                <p>Laptop Gamer Hp Victus 15-fb3020la, amd Ryzen 7, 16gb Ram, 512gb Ssd, nvidia Geforce Rtx 3050,
+                    fhd,15.6"</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop Gamer Hp Victus', 3.299, 'https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <div class="IMG">
+                <img src="https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg"
+                    alt="imagen 2">
+                <p>Laptop ASUS Zenbook Pro Duo</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop ASUS Zenbook Pro Duo', 4.599, 'https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg"
+                    alt="imagen 3">
+                <p>Laptop Hp 15-fd0253la Intel Core i5-1334u 8gb Ram 512gb Ssd 15.6"</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Laptop Hp 15-fd0253la Intel Core i5', 2.199, 'https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <div class="IMG">
+                <img src="https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82" alt="imagen 4">
+                <p>Gamer Intel Core I5 Rtx3050 24gb 512gb Ssd Loq 12° Gen 15.6" Fhd 144 Hz</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 4.789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659"
+                    alt="imagen 5">
+                <p>LAPTOP ASUS ROG STRIX G615JMR-RV165W INTEL CORE I7 16GB RAM 512GB SSD 16” RTX 5060</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 4.999, 'https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad" alt="imagen 6">
+                <p>Laptop ROG Strix G16 R9 16GB RAM 1TB SSD RTX 5060 8GB W11</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 7.999, 'https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image"
+                    alt="imagen 8">
+                <p>Laptop ROG Strix SCAR 18 (2025) G835LX-SA119W</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 21.999, 'https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            <div class="IMG">
+                <img src="https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad" alt="imagen 9">
+                <p>LAPTOP ASUS ROG STRIX G18 CORE ULTRA 9-275HX 32GB RAM 2TB SSD RTX 5080 16GB 18″ 2.5K, WIN11</p>
+                <button class="btn-carrito"
+                    onclick="agregarAlCarrito('Gamer Intel Core I5 Rtx3050', 21.999, 'https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad')">
+                    <i class="fas fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+                `;
+
+                // Ocultar botón volver
+                btnVolver.style.display = "none";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        });
+
+        // Carrusel
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousel = document.getElementById("carousel");
+            const prevBtn = document.querySelector(".prev");
+            const nextBtn = document.querySelector(".next");
+
+            if (carousel && prevBtn && nextBtn) {
+                let currentIndex = 0;
+                const cards = document.querySelectorAll(".card");
+                const cardWidth = cards[0].offsetWidth + 20;
+
+                function updateCarousel() {
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+
+                prevBtn.addEventListener("click", () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
+
+                nextBtn.addEventListener("click", () => {
+                    if (currentIndex < cards.length - 3) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
+            }
+        }); 
+    </script>
+        <script SameSite="None; Secure" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+    <script>
+        // INSTRUCCIONES IMPORTANTES:
+        // 1. Entra a tu cuenta en https://landbot.io
+        // 2. Crea tu bot o entra a uno existente.
+        // 3. Ve a la pestaña "Share" > "Embed in a website" > "Livechat".
+        // 4. Copia la URL que aparece en 'configUrl' y pégala abajo donde dice "PEGAR_AQUI_TU_URL_DE_LANDBOT"
+
+        var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://landbot.online/v3/H-3242269-TSIQQY7NZ24ZT5Q3/index.json',
+        });
+    </script>
+
+</body>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-contact">
+            <h4>Atención Clientes</h4>
+            <p>📞 +51 1 7011605</p>
+            <h4>Ventas</h4>
+            <p>📱 +51 9 01204000 / +51 9 06457491</p>
+        </div>
+        <div class="footer-social">
+            <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+            <p>Síguenos en:</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+            <p>RUC: 20609963524</p>
+        </div>
+    </div>
+    <div class="footer-links">
+        <div class="footer-column">
+            <h4>Servicio al Cliente</h4>
+            <ul>
+                <li><a href="#">Testimonios</a></li>
+                <li><a href="#">Orden de Servicio</a></li>
+                <li><a href="#">Libro de Reclamaciones</a></li>
+                <li><a href="#">Bases y Promociones</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Tecnicom</h4>
+            <ul>
+                <li><a href="#">Regístrate</a></li>
+                <li><a href="#">Recuperar Clave</a></li>
+                <li><a href="#">Cómo Comprar</a></li>
+                <li><a href="#">Boletas Electrónicas</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Empresas</h4>
+            <ul>
+                <li><a href="#">Nuestra Empresa</a></li>
+                <li><a href="#">Servicio Postventa</a></li>
+                <li><a href="#">Mapa Productos</a></li>
+                <li><a href="#">Solicitud Empresas</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+                <li><a href="#">Suscríbete</a></li>
+                <li><a href="#">Tiendas</a></li>
+                <li><a href="#">Seguir mi pedido</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</html>

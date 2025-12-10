@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentra tu Primera Laptop - Tecnicom</title>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="asistente.css">
+    <link rel="stylesheet" href="primeraLaptop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="texto">
+        <p>Bienvenido a Tecnicom</p>
+    </div>
+    <header class="encabezado">
+        <div class="logopng">
+            <img src="T.png" alt="loguito">
+        </div>
+        <div class="buscar">
+            <input type="text" placeholder="Buscar aqui">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="usuarios">
+            <a href="#"><i class="fas fa-user"></i>Cuenta usuario <i class="fas fa-caret-down"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i>Mi carrito de compras</a>
+        </div>
+    </header>
+    <div class="anuncio">
+        <marquee>¡Jueves de descuentazos! Aprovecha las super ofertas que tiene Tecnicom para ti en variedades de
+            productos seleccionador. No pierdas esta oportunidad, ¡te esperamos!</marquee>
+    </div>
+
+    <div class="asistente-controles" style="display: none;">
+        <input type="radio" id="uso-estudios" name="uso" value="estudios">
+        <input type="radio" id="uso-trabajo" name="uso" value="trabajo">
+        <input type="radio" id="uso-diseño" name="uso" value="diseño">
+        <input type="radio" id="uso-gaming" name="uso" value="gaming">
+
+        <input type="radio" id="marca-hp" name="marca" value="hp">
+        <input type="radio" id="marca-dell" name="marca" value="dell">
+        <input type="radio" id="marca-lenovo" name="marca" value="lenovo">
+        <input type="radio" id="marca-asus" name="marca" value="asus">
+        <input type="radio" id="marca-apple" name="marca" value="apple">
+        <input type="radio" id="marca-otros" name="marca" value="otros">
+
+        <input type="radio" id="pres-economico" name="presupuesto" value="economico">
+        <input type="radio" id="pres-intermedio" name="presupuesto" value="intermedio">
+        <input type="radio" id="pres-avanzado" name="presupuesto" value="avanzado">
+    </div>
+
+    <input type="radio" id="mostrar-paso1" name="control-pasos" checked style="display: none;">
+    <input type="radio" id="mostrar-paso2" name="control-pasos" style="display: none;">
+    <input type="radio" id="mostrar-paso3" name="control-pasos" style="display: none;">
+    <input type="radio" id="mostrar-resultados" name="control-pasos" style="display: none;">
+
+
+    <main class="asistente-container">
+        <div class="asistente-titulo">
+            <h1>Encuentra tu Laptop Ideal</h1>
+            <p>Responde 3 simples preguntas y te daremos las mejores recomendaciones.</p>
+        </div>
+
+        <div class="paso" id="paso1">
+            <h2>1. ¿Cuál será el uso principal de tu nueva laptop?</h2>
+            <div class="opciones-container">
+                <label for="uso-estudios" class="opcion-btn" data-uso="estudios">
+                    <i class="fas fa-book"></i> <span>Estudios y Tareas</span>
+                </label>
+                <label for="uso-trabajo" class="opcion-btn" data-uso="trabajo">
+                    <i class="fas fa-briefcase"></i> <span>Trabajo de Oficina</span>
+                </label>
+                <label for="uso-diseño" class="opcion-btn" data-uso="diseño">
+                    <i class="fas fa-pencil-ruler"></i> <span>Diseño y Edición</span>
+                </label>
+                <label for="uso-gaming" class="opcion-btn" data-uso="gaming">
+                    <i class="fas fa-gamepad"></i> <span>Gaming</span>
+                </label>
+                <label for="mostrar-paso2" class="paso-siguiente"></label>
+            </div>
+        </div>
+
+        <div class="paso" id="paso2">
+            <h2>2. ¿Qué marca de laptop prefieres?</h2>
+            <div class="opciones-container">
+                <label for="marca-hp" class="opcion-btn marca-btn" data-marca="hp">HP</label>
+                <label for="marca-dell" class="opcion-btn marca-btn" data-marca="dell">Dell</label>
+                <label for="marca-lenovo" class="opcion-btn marca-btn" data-marca="lenovo">Lenovo</label>
+                <label for="marca-asus" class="opcion-btn marca-btn" data-marca="asus">Asus</label>
+                <label for="marca-apple" class="opcion-btn marca-btn" data-marca="apple">Apple</label>
+                <label for="marca-otros" class="opcion-btn marca-btn" data-marca="otros">Otras/Sin preferencia</label>
+
+                <label for="mostrar-paso3" class="paso-siguiente"></label>
+            </div>
+        </div>
+
+        <div class="paso" id="paso3">
+            <h2>3. ¿Cuál es tu presupuesto?</h2>
+            <div class="opciones-container">
+                <label for="pres-economico" class="opcion-btn presupuesto-btn" data-presupuesto="economico">Hasta S/
+                    2,000</label>
+                <label for="pres-intermedio" class="opcion-btn presupuesto-btn" data-presupuesto="intermedio">S/ 2,000 -
+                    S/ 4,000</label>
+                <label for="pres-avanzado" class="opcion-btn presupuesto-btn" data-presupuesto="avanzado">Más de S/
+                    4,000</label>
+
+                <label for="mostrar-resultados" class="finalizar-btn">Ver Recomendaciones</label>
+            </div>
+        </div>
+    </main>
+
+    <div id="resultados-recomendados" class="resultados-container">
+        <h2>¡Aquí tienes tus laptops recomendadas!</h2>
+        <div class="imagenes">
+            <div class="resultado-card estudios hp economico">
+                <div class="laptop-card">
+                    <img src="./imagenes/hp-basico.jpg" alt="Laptop HP 14s">
+                    <div class="info">
+                        <h3>HP 14s</h3>
+                        <p class="desc">Ideal para documentos y navegación. Core i3, 8GB RAM.</p><button
+                            class="ver-oferta-btn">Ver Oferta <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resultado-card diseño apple avanzado">
+                <div class="laptop-card">
+                    <img src="./imagenes/macbook-pro16.jpg" alt="MacBook Pro 16">
+                    <div class="info">
+                        <h3>MacBook Pro 16 (M3 Max)</h3>
+                        <p class="desc">Máxima potencia para diseño 3D y video 8K. Chip M3 Max.</p><button
+                            class="ver-oferta-btn">Ver Oferta <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resultado-card">
+                <label for="mostrar-paso1" class="reiniciar-btn">Reiniciar Asistente</label>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h4>Atención Clientes</h4>
+                <p>📞 +51 1 7011605</p>
+                <h4>Ventas</h4>
+                <p>📱 +51 9 01204000 / +51 9 06457491</p>
+            </div>
+            <div class="footer-social">
+                <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
+                <p>Síguenos en:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p><strong>TECNICOM PERÚ S.A.C.</strong></p>
+                <p>RUC: 20609963524</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Servicio al Cliente</h4>
+                <ul>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Orden de Servicio</a></li>
+                    <li><a href="#">Libro de Reclamaciones</a></li>
+                    <li><a href="#">Bases y Promociones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Tecnicom</h4>
+                <ul>
+                    <li><a href="#">Regístrate</a></li>
+                    <li><a href="#">Recuperar Clave</a></li>
+                    <li><a href="#">Cómo Comprar</a></li>
+                    <li><a href="#">Boletas Electrónicas</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresas</h4>
+                <ul>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Servicio Postventa</a></li>
+                    <li><a href="#">Mapa Productos</a></li>
+                    <li><a href="#">Solicitud Empresas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Suscríbete</a></li>
+                    <li><a href="#">Tiendas</a></li>
+                    <li><a href="#">Seguir mi pedido</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -138,11 +138,16 @@
     </footer>
 
     <!-- ✅ Script de registro -->
-    <script>
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+    const SUPABASE_URL = 'https://gmdfyuauxnupclgfyglv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_I-3gmDxhuPqf9EL-mwAE1Q_XteOWAFz';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('registerForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        // Obtener datos
+        // Obtener datos del formulario
         const nombre = document.getElementById('nombre').value.trim();
         const apellido = document.getElementById('apellido').value.trim();
         const email = document.getElementById('email-register').value.trim();
@@ -151,58 +156,50 @@
         const password = document.getElementById('password-register').value;
         const confirmPassword = document.getElementById('confirm-password').value;
 
-        // Validaciones básicas
-        if (!nombre || !apellido) {
-            alert('⚠️ Nombre y apellido son obligatorios');
-            return;
-        }
-
-        if (!email.includes('@')) {
-            alert('⚠️ Ingresa un email válido (ej: usuario@ejemplo.com)');
-            return;
-        }
-
-        if (password.length < 4) {
-            alert('⚠️ La contraseña debe tener al menos 4 caracteres');
-            return;
-        }
-
+        // Validaciones
         if (password !== confirmPassword) {
-            alert('⚠️ Las contraseñas no coinciden');
+            alert('Las contraseñas no coinciden');
             return;
         }
 
-        // Mostrar "cargando"
         const submitBtn = this.querySelector('.btn-submit');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Registrando...';
         submitBtn.disabled = true;
 
-        // Simular registro exitoso (2 segundos de espera)
-        setTimeout(() => {
-            // Guardar en localStorage (simulado)
+        try {
+            // Insertar en Supabase
+            const { data, error } = await supabase
+                .from('usuarios')
+                .insert([
+                    {
+                        nombre: nombre,
+                        apellido: apellido,
+                        correo: email,
+                        telefono: telefono,
+                        direccion: direccion,
+                        contrasena: password  // ⚠️ EN PRODUCCIÓN DEBES ENCRIPTAR
+                    }
+                ])
+                .select();
+
+            if (error) throw error;
+
+            alert('¡Registro exitoso en Supabase!');
             localStorage.setItem('usuarioLogueado', 'true');
-            localStorage.setItem('usuarioNombre', nombre + ' ' + apellido);
-            localStorage.setItem('usuarioEmail', email);
-
-            // Mostrar éxito
-            alert('✅ ¡Registro simulado exitoso!\n\nBienvenido/a ' + nombre + 
-                  '\n\n📝 En un sistema real:\n' +
-                  '- Email: ' + email + '\n' +
-                  '- Teléfono: ' + telefono + '\n' +
-                  '- Dirección: ' + direccion + '\n' +
-                  '- Contraseña: Encriptada en base de datos');
-
-            // Redirigir a página principal
+            localStorage.setItem('usuarioNombre', nombre);
             window.location.href = 'principal.html';
-            
-            // Restaurar botón (por si acaso)
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error: ' + error.message);
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-        }, 2000);
+        }
     });
 </script>
 </body>
 
 
 </html>
+

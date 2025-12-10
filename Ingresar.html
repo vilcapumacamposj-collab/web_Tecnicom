@@ -114,34 +114,65 @@
     </footer>
 
     <!-- ✅ Script funcional para guardar sesión -->
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+    <!-- ✅ Script SIMULADO para presentación -->
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-            const formData = new FormData(this);
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
 
-            fetch('ingresar.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        localStorage.setItem('usuarioLogueado', 'true');
-                        localStorage.setItem('usuarioNombre', data.nombre);
-                        localStorage.setItem('usuarioEmail', document.getElementById('email').value);
+        if (!email || !password) {
+            alert('⚠️ Por favor completa todos los campos');
+            return;
+        }
 
-                        window.location.href = 'principal.html';
-                    } else {
-                        alert('Error: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al iniciar sesión');
-                });
-        });
-    </script>
+        // Mostrar "cargando"
+        const submitBtn = this.querySelector('.btn-submit');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Ingresando...';
+        submitBtn.disabled = true;
+
+        // Simular validación (2 segundos de espera)
+        setTimeout(() => {
+            // Validación SIMULADA para demo
+            if (email.includes('@') && password.length >= 4) {
+                // Guardar sesión en localStorage
+                localStorage.setItem('usuarioLogueado', 'true');
+                localStorage.setItem('usuarioNombre', email.split('@')[0]); // Nombre del email
+                localStorage.setItem('usuarioEmail', email);
+
+                // Mostrar éxito
+                alert('✅ ¡Login simulado exitoso!\n\nBienvenido/a ' + 
+                      email.split('@')[0] + 
+                      '\n\n🔐 En un sistema real:\n' +
+                      '- Email verificado en base de datos\n' +
+                      '- Contraseña encriptada\n' +
+                      '- Sesión segura iniciada');
+
+                // Redirigir a página principal
+                window.location.href = 'principal.html';
+            } else {
+                alert('❌ Credenciales incorrectas\n\n💡 Para la demo:\n' +
+                      '- Usa cualquier email con "@"\n' +
+                      '- Contraseña de 4+ caracteres\n' +
+                      '- Ej: demo@tecnicom.com / 123456');
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }, 1500);
+    });
+
+    // Opcional: Si hay un usuario ya logueado, redirigir
+    document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('usuarioLogueado') === 'true') {
+            console.log('👤 Usuario ya está logueado, puedes redirigir a principal.html si quieres');
+            // window.location.href = 'principal.html';
+        }
+    });
+</script>
 </body>
+
 
 </html>

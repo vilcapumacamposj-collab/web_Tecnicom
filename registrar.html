@@ -139,48 +139,70 @@
 
     <!-- ✅ Script de registro -->
     <script>
-        document.getElementById('registerForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-            const formData = new FormData(this);
+        // Obtener datos
+        const nombre = document.getElementById('nombre').value.trim();
+        const apellido = document.getElementById('apellido').value.trim();
+        const email = document.getElementById('email-register').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const direccion = document.getElementById('direccion').value.trim();
+        const password = document.getElementById('password-register').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
 
-            // Usa URL relativa en lugar de absoluta
-            fetch('registrar.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error HTTP: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Respuesta del servidor:', data);
+        // Validaciones básicas
+        if (!nombre || !apellido) {
+            alert('⚠️ Nombre y apellido son obligatorios');
+            return;
+        }
 
-                    if (data.success) {
-                        // Guardar en localStorage
-                        const nombre = document.getElementById('nombre').value;
-                        const email = document.getElementById('email-register').value;
+        if (!email.includes('@')) {
+            alert('⚠️ Ingresa un email válido (ej: usuario@ejemplo.com)');
+            return;
+        }
 
-                        localStorage.setItem('usuarioLogueado', 'true');
-                        localStorage.setItem('usuarioNombre', nombre);
-                        localStorage.setItem('usuarioEmail', email);
+        if (password.length < 4) {
+            alert('⚠️ La contraseña debe tener al menos 4 caracteres');
+            return;
+        }
 
-                        alert('¡Registro exitoso! Bienvenido ' + nombre);
+        if (password !== confirmPassword) {
+            alert('⚠️ Las contraseñas no coinciden');
+            return;
+        }
 
-                        // Redirigir a página principal
-                        window.location.href = 'principal.html';
-                    } else {
-                        alert('Error: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error completo:', error);
-                    alert('Error al conectar con el servidor. Verifica que XAMPP esté ejecutándose.');
-                });
-        });
-    </script>
+        // Mostrar "cargando"
+        const submitBtn = this.querySelector('.btn-submit');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Registrando...';
+        submitBtn.disabled = true;
+
+        // Simular registro exitoso (2 segundos de espera)
+        setTimeout(() => {
+            // Guardar en localStorage (simulado)
+            localStorage.setItem('usuarioLogueado', 'true');
+            localStorage.setItem('usuarioNombre', nombre + ' ' + apellido);
+            localStorage.setItem('usuarioEmail', email);
+
+            // Mostrar éxito
+            alert('✅ ¡Registro simulado exitoso!\n\nBienvenido/a ' + nombre + 
+                  '\n\n📝 En un sistema real:\n' +
+                  '- Email: ' + email + '\n' +
+                  '- Teléfono: ' + telefono + '\n' +
+                  '- Dirección: ' + direccion + '\n' +
+                  '- Contraseña: Encriptada en base de datos');
+
+            // Redirigir a página principal
+            window.location.href = 'principal.html';
+            
+            // Restaurar botón (por si acaso)
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 2000);
+    });
+</script>
 </body>
+
 
 </html>

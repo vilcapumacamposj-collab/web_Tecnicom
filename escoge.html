@@ -4,342 +4,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escoge Componentes - Tecnicom</title>
+    <title>Tecnicom - Selecciona Componentes</title>
     <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="armaPC.css">
-    <link rel="stylesheet" href="escoge.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .seleccion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .seleccion-titulo {
+            text-align: center;
+            color: #0000ff;
+            margin-bottom: 30px;
+        }
+
+        .categorias-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .categoria-btn {
+            padding: 12px 25px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .categoria-btn.active {
+            background-color: #0000ff;
+            color: white;
+        }
+
+        .categoria-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+
+        .componentes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .componente-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .componente-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .componente-img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .componente-nombre {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            min-height: 40px;
+        }
+
+        .componente-precio {
+            color: #0000ff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .cantidad-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-cantidad {
+            width: 30px;
+            height: 30px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-cantidad:hover {
+            background-color: #0000ff;
+            color: white;
+        }
+
+        .cantidad-input {
+            width: 50px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .btn-agregar {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn-agregar:hover {
+            background-color: #218838;
+        }
+
+        .btn-agregar.agregado {
+            background-color: #6c757d;
+        }
+
+        .btn-eliminar {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn-eliminar:hover {
+            background-color: #c82333;
+        }
+
+        .resumen-compra {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            border: 2px solid #0000ff;
+        }
+
+        .resumen-titulo {
+            color: #0000ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .resumen-lista {
+            margin-bottom: 25px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .resumen-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .resumen-info {
+            flex: 1;
+        }
+
+        .resumen-nombre {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .resumen-detalle {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resumen-precio {
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .resumen-subtotal {
+            font-weight: bold;
+            color: #0000ff;
+            font-size: 16px;
+        }
+
+        .btn-eliminar-item {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+
+        .btn-eliminar-item:hover {
+            color: #c82333;
+        }
+
+        .resumen-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 0;
+            border-top: 2px solid #0000ff;
+            margin-top: 15px;
+        }
+
+        .acciones-carrito {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-finalizar {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 2;
+            transition: background-color 0.3s;
+        }
+
+        .btn-finalizar:hover {
+            background-color: #e64a19;
+        }
+
+        .btn-vaciar {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+            transition: background-color 0.3s;
+        }
+
+        .btn-vaciar:hover {
+            background-color: #5a6268;
+        }
+
+        .seleccion-marca {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .seleccion-marca span {
+            color: #0000ff;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .componentes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .categorias-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+
+            .categoria-btn {
+                white-space: nowrap;
+            }
+
+            .resumen-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .resumen-precio {
+                text-align: left;
+                width: 100%;
+            }
+
+            .acciones-carrito {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="cabeza">
         <p>Bienvenidos a la segunda plataforma de Tecnicom</p>
     </div>
+
     <header class="primero">
-        <div class="logotipo">
-            <img src="T.png" alt="logopagina">
+        <div class="logopng">
+            <a href="principal.html">
+                <img src="T.png" alt="loguito">
+            </a>
         </div>
         <div class="segundo">
-            <input type="text" placeholder="Buscar">
-            <button><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Buscar" id="searchInput">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
         <div class="tercero">
             <a href="#"><i class="fas fa-user"></i>Mi Cuenta <i class="fas fa-caret-down"></i></a>
-            <a href="#"><i class="fas fa-shopping-cart"></i>Mi Carrito</a>
+            <a href="carrito.html" class="cart-link">
+                <i class="fas fa-shopping-cart"></i>Mi Carrito
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
         </div>
     </header>
+
     <div class="propaganda">
         <marquee>Aprovecha los descuentos que tenemos para ti</marquee>
     </div>
 
-    <main class="configurator-main">
-        <div class="configurator-title-bar">
-            <h1>Arma tu PC_</h1>
-            <i class="fas fa-microchip chip-icon"></i>
+    <div class="seleccion-container">
+        <h1 class="seleccion-titulo">Selecciona los Componentes</h1>
+
+        <div class="seleccion-marca">
+            Has seleccionado: <span id="marcaSeleccionada">Intel</span>
         </div>
 
-        <section class="configurator-steps">
+        <div class="categorias-tabs" id="categoriasTabs">
+            <!-- Las pestañas se generarán con JavaScript -->
+        </div>
 
-            <div class="step-item open">
-                <div class="step-header" data-step="1">
-                    <span class="step-number">1</span>
-                    <h3>Filtro por Tienda</h3>
-                    <i class="fas fa-minus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <label for="select-tienda">Selecciona la tienda donde retiraras tu PC Armado</label>
-                    <select id="select-tienda" class="select-field">
-                        <option value="">- Seleccione Tienda -</option>
-                        <option value="lima">Tienda Lima Centro</option>
-                    </select>
+        <div class="componentes-grid" id="componentesGrid">
+            <!-- Los componentes se generarán con JavaScript -->
+        </div>
 
-                    <div class="withdrawal-info">
-                        <h4>¿Qué necesitas llevar para poder retirar?</h4>
-                        <p class="warning-text">⚠️ Si eres quien realizó la compra o fuiste individualizado como la
-                            persona que retira, necesitas:</p>
-                        <ul>
-                            <li><span class="bullet-point">•</span> Documento de identidad o RUC de empresa registrado
-                                al momento de la compra.</li>
-                            <li><span class="bullet-point">•</span> Debes llevar la **Boleta / Factura** o confirmación
-                                de compra (e-mail).</li>
-                        </ul>
-                        <p class="note-text">
-                            Nota: Los productos pueden ser retirados sólo por quien realizó la compra o bien por quién
-                            fue individualizado como la persona que retira. Siempre se deberá firmar un comprobante de
-                            recibo conforme.
-                        </p>
-                    </div>
-                </div>
+        <div class="resumen-compra">
+            <h2 class="resumen-titulo">Resumen de tu PC Personalizada</h2>
+            <div class="resumen-lista" id="resumenLista">
+                <p style="text-align: center; color: #666;">Selecciona componentes para ver el resumen</p>
             </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="2">
-                    <span class="step-number">2</span>
-                    <h3>Indique Servicio de Armado</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <label for="select-servicio">Servicio de Armado</label>
-                    <select id="select-servicio" class="select-field">
-                        <option value="">Selecciona Servicio de Armado</option>
-                    </select>
-                </div>
+            <div class="resumen-total">
+                <span>Total:</span>
+                <span id="totalCompra">S/ 0.00</span>
             </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="3">
-                    <span class="step-number">3</span>
-                    <h3>Seleccionar piezas básicas</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <div id="intel-filters" class="platform-specific-filters" style="display: none;">
-                        <h4>Generación Intel</h4>
-                        <div class="filter-group">
-                            <label><input type="radio" name="generation" value="14th"> 14th Gen (LGA 1700)</label>
-                            <label><input type="radio" name="generation" value="13th"> 13th Gen (LGA 1700)</label>
-                        </div>
-                    </div>
-
-                    <div id="amd-filters" class="platform-specific-filters" style="display: none;">
-                        <h4>Generación AMD</h4>
-                        <div class="filter-group">
-                            <label><input type="radio" name="generation" value="AM5"> AM5 (Ryzen 7000+)</label>
-                            <label><input type="radio" name="generation" value="AM4"> AM4 (Ryzen 5000/3000)</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="select-cpu">Procesador (CPU) * Obligatorio</label>
-                        <select id="select-cpu" class="select-field">
-                            <option value="">Selecciona Procesador (CPU)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="select-motherboard">Placa Madre * Obligatorio</label>
-                        <select id="select-motherboard" class="select-field">
-                            <option value="">Selecciona Placa Madre</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="select-ram">1ra Memoria Ram * Obligatorio</label>
-                        <select id="select-ram" class="select-field">
-                            <option value="">Selecciona 1ra Memoria Ram</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="select-gpu">1ra Tarjeta Grafica</label>
-                        <select id="select-gpu" class="select-field">
-                            <option value="">Selecciona 1ra Tarjeta Grafica</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="select-red">Tarjeta de Red</label>
-                        <select id="select-red" class="select-field">
-                            <option value="">Selecciona Tarjeta de Red</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="acciones-carrito">
+                <button class="btn-vaciar" id="btnVaciar">
+                    <i class="fas fa-trash-alt"></i> Vaciar Carrito
+                </button>
+                <button class="btn-finalizar" id="btnFinalizar">
+                    <i class="fas fa-shopping-cart"></i> Ir al Carrito
+                </button>
             </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="4">
-                    <span class="step-number">4</span>
-                    <h3>Almacenamiento</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <div class="form-group">
-                        <label for="select-m2">1ra Unidad M.2 * Obligatorio</label>
-                        <select id="select-m2" class="select-field">
-                            <option value="">Selecciona 1ra Unidad M.2</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-ssd">1ra Unidad SSD * Obligatorio</label>
-                        <select id="select-ssd" class="select-field">
-                            <option value="">Selecciona 1ra Unidad SSD</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-hdd">1er Disco Duro * Obligatorio</label>
-                        <select id="select-hdd" class="select-field">
-                            <option value="">Selecciona 1er Disco Duro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-optic">Unidad Óptica</label>
-                        <select id="select-optic" class="select-field">
-                            <option value="">Selecciona Unidad Óptica</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="5">
-                    <span class="step-number">5</span>
-                    <h3>Seleccionar Gabinete</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <div class="form-group">
-                        <label for="select-case">Gabinete * Obligatorio</label>
-                        <select id="select-case" class="select-field">
-                            <option value="">Selecciona Gabinete</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="6">
-                    <span class="step-number">6</span>
-                    <h3>Energía y Refrigeración</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <div class="form-group">
-                        <label for="select-psu">Fuente de Poder</label>
-                        <select id="select-psu" class="select-field">
-                            <option value="">Selecciona Fuente de Poder</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-fan">Ventilador</label>
-                        <select id="select-fan" class="select-field">
-                            <option value="">Selecciona Ventilador</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-cooler">Refrigeración CPU</label>
-                        <select id="select-cooler" class="select-field">
-                            <option value="">Selecciona Refrigeración CPU</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-paste">Pasta Térmica</label>
-                        <select id="select-paste" class="select-field">
-                            <option value="">Selecciona Pasta Térmica</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="7">
-                    <span class="step-number">7</span>
-                    <h3>Sistema Operativo y Software</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <div class="form-group">
-                        <label for="select-os">Sistema Operativo</label>
-                        <select id="select-os" class="select-field">
-                            <option value="">Selecciona Sistema Operativo</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-software">Software</label>
-                        <select id="select-software" class="select-field">
-                            <option value="">Selecciona Software</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-digital">Software Digital</label>
-                        <select id="select-digital" class="select-field">
-                            <option value="">Selecciona Software Digital</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-antivirus">Antivirus</label>
-                        <select id="select-antivirus" class="select-field">
-                            <option value="">Selecciona Antivirus</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-header" data-step="8">
-                    <span class="step-number">8</span>
-                    <h3>Periféricos y accesorios</h3>
-                    <i class="fas fa-plus toggle-icon"></i>
-                </div>
-                <div class="step-content">
-                    <div class="form-group">
-                        <label for="select-monitor">Monitor</label>
-                        <select id="select-monitor" class="select-field">
-                            <option value="">Selecciona Monitor</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-keyboard-mouse">Teclado y Mouse</label>
-                        <select id="select-keyboard-mouse" class="select-field">
-                            <option value="">Selecciona Teclado y Mouse</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-mouse">Mouse</label>
-                        <select id="select-mouse" class="select-field">
-                            <option value="">Selecciona Mouse</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-keyboard">Teclado</label>
-                        <select id="select-keyboard" class="select-field">
-                            <option value="">Selecciona Teclado</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-headset">Audífono</label>
-                        <select id="select-headset" class="select-field">
-                            <option value="">Selecciona Audífono</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-desk">Escritorio</label>
-                        <select id="select-desk" class="select-field">
-                            <option value="">Selecciona Escritorio</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-chair">Silla</label>
-                        <select id="select-chair" class="select-field">
-                            <option value="">Selecciona Silla</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="select-wheel">Volante</label>
-                        <select id="select-wheel" class="select-field">
-                            <option value="">Selecciona Volante</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="summary-section">
-            <h3>Resumen de Compra</h3>
-            <div class="summary-details">
-                <div class="secure-buy">
-                    <i class="fas fa-lock"></i>
-                    <span>Compra 100% Segura</span>
-                </div>
-                <div class="total-box">
-                    <div class="price-info">
-                        <p>Precio Total</p>
-                        <p class="total-amount">S/ 0.00</p>
-                    </div>
-                    <button class="continue-purchase-btn" disabled>Continuar Compra</button>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-top">
@@ -353,9 +407,9 @@
                 <img src="T.png" alt="Tecnicom Logo" class="footer-logo">
                 <p>Síguenos en:</p>
                 <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="footer-legal">
@@ -367,176 +421,488 @@
             <div class="footer-column">
                 <h4>Servicio al Cliente</h4>
                 <ul>
-                        <li><a href="#">Testimonios</a></li>
-                        <li><a href="#">Orden de Servicio</a></li>
-                        <li><a href="#">Libro de Reclamaciones</a></li>
-                        <li><a href="#">Bases y Promociones</a></li>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Orden de Servicio</a></li>
+                    <li><a href="#">Libro de Reclamaciones</a></li>
+                    <li><a href="#">Bases y Promociones</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Tecnicom</h4>
                 <ul>
-                        <li><a href="#">Regístrate</a></li>
-                        <li><a href="#">Recuperar Clave</a></li>
-                        <li><a href="#">Cómo Comprar</a></li>
-                        <li><a href="#">Boletas Electrónicas</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Regístrate</a></li>
+                    <li><a href="#">Recuperar Clave</a></li>
+                    <li><a href="#">Cómo Comprar</a></li>
+                    <li><a href="#">Boletas Electrónicas</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Empresas</h4>
                 <ul>
-                        <li><a href="#">Nuestra Empresa</a></li>
-                        <li><a href="#">Servicio Postventa</a></li>
-                        <li><a href="#">Mapa Productos</a></li>
-                        <li><a href="#">Solicitud Empresas</a></li>
+                    <li><a href="#">Nuestra Empresa</a></li>
+                    <li><a href="#">Servicio Postventa</a></li>
+                    <li><a href="#">Mapa Productos</a></li>
+                    <li><a href="#">Solicitud Empresas</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Enlaces Rápidos</h4>
                 <ul>
-                        <li><a href="#">Suscríbete</a></li>
-                        <li><a href="#">Tiendas</a></li>
-                        <li><a href="#">Seguir mi pedido</a></li>
-                        <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Suscríbete</a></li>
+                    <li><a href="#">Tiendas</a></li>
+                    <li><a href="#">Seguir mi pedido</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
         </div>
     </footer>
 
     <script>
-        async function populateSelect(selectElementId, componentType, currentPlatform, requiredSocket = null, requiredRamType = null) {
-            const selectElement = document.getElementById(selectElementId);
-            selectElement.innerHTML = `<option value="">Cargando ${componentType}...</option>`;
+        // DATOS DE COMPONENTES (mismo que antes)
+        const componentes = {
+            "Computadoras": [
+                { img: "https://mipclista.com/img/p/9/0/5/0/9050.jpg", nombre: "PC Gamer Haku Red Plus Ryzen 5 8600G", precio: "S/ 2,399" },
+                { img: "https://media.falabella.com/falabellaPE/114488217_01/w=1500,h=1500,fit=pad", nombre: "Computadora PC GAMER RYZEN 7 5700G 16GB 512GB Monitor 27", precio: "S/ 2,479" },
+                { img: "https://mipclista.com/img/p/9/1/3/8/9138.jpg", nombre: "PC Gamer Draco Black Blue Intel Core i9 Ultra 285K", precio: "S/ 13,299" },
+                { img: "https://mipclista.com/img/p/8/3/2/3/8323.jpg", nombre: "PC Gamer K-PLUS Orange Core i7 14700F 14th", precio: "S/ 4,699" },
+                { img: "https://oechsle.vteximg.com.br/arquivos/ids/22548707-1000-1000/COMPUTADORA-PC-GAMER-DRACO-RGB-PLUS-CORE-I9-12900KF-32GB-1TB-24-RTX5060-8GB-MI-PC-LISTA-MIPCLISTA.jpg?v=638961607575630000", nombre: "COMPUTADORA PC GAMER DRACO RGB PLUS CORE I9 12900KF 32GB 1TB 24 RTX5060 8GB", precio: "S/ 6,499" },
+                { img: "https://mipclista.com.pe/9136-home_default/pc-gamer-hero-pink-core-i7-13700f-13th.jpg", nombre: "PC Gamer Hero RGB Core ULTRA 7 265KF", precio: "S/ 10,000" },
+                { img: "https://plazavea.vteximg.com.br/arquivos/ids/31522012-450-450/imageUrl_1.jpg?v=638858612765900000", nombre: "PC GAMER FALKOR TANK RGB RYZEN 9 9950X 32GB DDR5 1TB 27 RTX5070TI 16GB", precio: "S/ 6,899" },
+                { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQnNLVfhBMKcCSaywsbadP3PTwQOar1EWDmYdqULgQOoBe-VQMJ0I9MudB7ZI-lc-oL4&usqp=CAU", nombre: "PC Gamer Draco Red Core I7 8th", precio: "S/ 2,299" },
+            ],
+            "Monitores": [
+                { img: "https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/4709/PMP20000358152/full_image-1.jpeg", nombre: "MONITOR GAMER MASTER G 27'' 180Hz", precio: "S/ 619" },
+                { img: "https://www.lg.com/content/dam/channel/wcms/pe/images/monitores/32gs95uv-b/gallery/ultragear-32gs95uv-b-gallery-02-2010.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800", nombre: "Monitor gaming UltraGear™ OLED 32'' 4K", precio: "S/ 3,999" },
+                { img: "https://www.lg.com/content/dam/channel/wcms/pe/images/monitores/27gs95qe-b_awf_espr_pe_c/gallery/ultragear-27gs95qe-galley-02-2010.jpg/jcr:content/renditions/thum-1600x1062.jpeg?w=800", nombre: "Monitor Gamer OLED UltraGear™ 27''", precio: "S/ 2,499" },
+                { img: "https://media.falabella.com/falabellaPE/140073618_01/w=1500,h=1500,fit=pad", nombre: "MONITOR GAMER CURVO Teros TE-3411G 34 180HZ 1MS 2K", precio: "S/ 1,299" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/474212-1200-1200?v=638887150287430000&width=1200&height=1200&aspect=true", nombre: "Monitor plano gamer Asus VG249Q3R 23.8 Panel IPS, FHD (1920 x 1080), 180Hz, 1ms, entradas DisplayPort/HDMI", precio: "S/ 599" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/489177-1200-1200?v=638984891944830000&width=1200&height=1200&aspect=true", nombre: "Monitor gamer plano Xiaomi A27QI 27, pantalla 2K ultra nítida, 100Hz, 1ms, Fast IPS, negro", precio: "S/ 1,599" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/373373-1200-1200?v=638550131417070000&width=1200&height=1200&aspect=true", nombre: "Monitor gamer 31.5 Asrock PG32QF2B Panel VA, QHD (2560 x 1440), 165Hz, 1ms, entradas HDMI/ DisplayPort", precio: "S/ 619" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/483436-1200-1200?v=638914020966830000&width=1200&height=1200&aspect=true", nombre: "Monitor Teros TE-2415S 23.8 IPS, resolución FHD, 120Hz, tiempo de respuesta de 1ms, conectividad HDMI y VGA", precio: "S/ 300" }
+            ],
+            "Procesadores": [
+                { img: "https://www.impacto.com.pe/storage/products/lg/175458445473396.webp", nombre: "Intel Core i9 14900K", precio: "S/ 2,799" },
+                { img: "https://www.impacto.com.pe/storage/products/lg/17387884735165.webp", nombre: "Intel Core i7 13700k", precio: "S/ 2,099" },
+                { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNU5fYIaKACJr5Em4SsVjOPoZO4GI64Hw0fg&s", nombre: "Intel Core i5 14600k", precio: "S/ 899" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/347292-1200-1200?v=638440847753570000&width=1200&height=1200&aspect=true", nombre: "Procesador Intel Core i5-13400F, 2.5GHZ, 6+4 cores, LGA1700", precio: "S/ 959" },
+                { img: "https://www.impacto.com.pe/storage/products/md/17387901962069.webp", nombre: "Procesador Amd Ryzen 7 7700x 4.5ghz Hasta 5.4ghz 32mb Am5, 8 Nucleos", precio: "S/ 1,299" },
+                { img: "https://www.impacto.com.pe/storage/products/md/174198531943800.webp", nombre: "Procesador Amd Ryzen 9 9950x3d 4.3ghz Hasta 5.7ghz, 128mb Am5, 16 Nucleos, Radeon Graphics", precio: "S/ 2,999" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/371424-1200-1200?v=638538902141070000&width=1200&height=1200&aspect=true", nombre: "Procesador AMD Ryzen 5 7600X 6 cores, 5.3Ghz, AM5", precio: "S/ 759" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/355281-1200-1200?v=638470000554700000&width=1200&height=1200&aspect=true", nombre: "Procesador AMD Ryzen 5 8600G (IA), 5Ghz, 6 cores, AM5, 65W", precio: "S/ 999" }
+            ],
+            "Placas Madres": [
+                { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldYLBjQT9Ecsbu2U9FTzlDIm7mSoWppZxZA&s", nombre: "Placa Madre ASUS Prime Z790-P", precio: "S/ 599" },
+                { img: "https://asset.msi.com/resize/image/global/product/product_3_20180716112125_5b4c0f3535ada.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png", nombre: "Placa madre MSI B450 GAMING PLUS", precio: "S/ 999" },
+                { img: "https://cdn.memorykings.pe/files/2023/01/18/346382-MK033747D.jpg", nombre: "PLACA ASROCK Z790 PG SONIC", precio: "S/ 1,136" },
+                { img: "https://www.mink.com.ar/qloud/ryr/fotos/24793-0.jpg", nombre: "PLACA MADRE GIGABYTE B650M D3HP AM5 DDR5", precio: "S/ 429" },
+                { img: "https://www.mink.com.ar/qloud/ryr/fotos/25788-0.jpg", nombre: "PLACA MADRE ASUS B840M-A AM5 DDR5", precio: "S/ 999" },
+                { img: "https://www.mink.com.ar/qloud/ryr/fotos/24794-0.jpg", nombre: "PLACA MADRE MSI B650M PZ AM5 DDR5 (BACK CONNECTORS)", precio: "S/ 1,289" },
+                { img: "https://www.mink.com.ar/qloud/ryr/fotos/25828-0.jpg", nombre: "PLACA MADRE GIGABYTE X870 EAGLE WIFI7 AM5 DDR5 (M.2 GEN5)", precio: "S/ 1,129" },
+                { img: "https://www.mink.com.ar/qloud/ryr/fotos/25672-0.jpg", nombre: "PLACA MADRE GIGABYTE B650 AORUS ELITE AX V2 WIFI AM5 DDR5", precio: "S/ 1,699" }
+            ],
+            "Memoria RAM": [
+                { img: "https://www.impacto.com.pe/storage/products/md/173868453832535.webp", nombre: "MEMORIA RAM Xpg Ddr4 16gb Spectrix", precio: "S/ 190" },
+                { img: "https://www.impacto.com.pe/storage/products/md/173860643993951.webp", nombre: "MEMORIA RAM Acer Ddr4 16gb Predator", precio: "S/ 240" },
+                { img: "https://www.impacto.com.pe/storage/products/md/173836105911792.webp", nombre: "MEMORIA RAM Kingston Fury 32gb", precio: "S/ 136" },
+                { img: "https://www.infotec.com.pe/60539-thickbox_default/memoria-ram-kingston-8gb3200mhz-ddr4-fury-beast-kf432c16bb8-negro.jpg", nombre: "MEMORIA RAM KINGSTON 8GB/3200MHZ DDR4 FURY BEAST ( KF432C16BB/8 ) NEGRO", precio: "S/ 120" },
+                { img: "https://www.infotec.com.pe/67448-large_default/memoria-ram-kingston-8gb6000mhz-ddr5-fury-beast-kf560c40bb-8-negro.jpg", nombre: "MEMORIA RAM KINGSTON 8GB/6000MHZ DDR5 FURY BEAST ( KF560C40BB-8 ) NEGRO", precio: "S/ 159" },
+                { img: "https://www.infotec.com.pe/74528-thickbox_default/memoria-ram-kingston-16gb5200mhz-ddr5-fury-beast-kf552c40bw-16-blanco.jpg", nombre: "MEMORIA RAM KINGSTON 16GB/5200MHZ DDR5 FURY BEAST (KF552C40BW-16) BLANCO", precio: "S/ 319" },
+                { img: "https://www.infotec.com.pe/104175-large_default/memoria-ram-teamgroup-16gb6000mhz-vulcan-ddr5-flbd516g000hc38a01-black.jpg", nombre: "MEMORIA RAM TEAMGROUP 16GB/6000MHZ VULCAN DDR5 ( FLBD516G000HC38A01 ) BLACK", precio: "S/ 329" },
+                { img: "https://www.infotec.com.pe/104174-large_default/memoria-ram-teamgroup-16gb6000mhz-ddr5-delta-rgb-ff3d516g6000hc37a01-led-rgbnegro.jpg", nombre: "MEMORIA RAM TEAMGROUP 16GB/6000MHZ DDR5 DELTA RGB ( FF3D516G6000HC37A01 ) LED-RGB|NEGRO", precio: "S/ 359" }
+            ],
+            "Almacenamiento": [
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/348036-1200-1200?v=638443042225200000&width=1200&height=1200&aspect=true", nombre: "SSD Kingston 1TB NVMe", precio: "S/ 199" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/379438-1200-1200?v=638584788458300000&width=1200&height=1200&aspect=true", nombre: "Disco Duro 2TB Seagate", precio: "S/ 289" },
+                { img: "https://www.impacto.com.pe/storage/products/md/175468784526135.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Msi 500gb Nvme Spatium M450, 2280 (sm450n500) 3600mb/s", precio: "S/ 199" },
+                { img: "https://www.impacto.com.pe/storage/products/md/1738351687725.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Kingston 2tb Nvme Nv3, 2280 (snv3s/2000g)", precio: "S/ 599" },
+                { img: "https://www.impacto.com.pe/storage/products/md/176313524260059.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Biwin X570 Pro 1tb, 2280 (bx570dn01tb-rgx) 14000mb/s", precio: "S/ 499" },
+                { img: "https://www.impacto.com.pe/storage/products/md/173834006542600.webp", nombre: "Unidad De Almacenamiento Ssd M.2 Pcie Adata 1tb Nvme Legend 900, 2280 (sleg-900-1tcs) Hasta 7000mb/s De Lectura Con Discipador", precio: "S/ 315" }
+            ],
+            "Tarjetas de Video": [
+                { img: "https://supertec.com.pe/img-apps/productos/TARJETA-DE-VIDEO-GIGABYTE-RADEON-RX9070XT-16GB-GAMING-OC-GDDR6-256BIT-1.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RADEON RX9070XT 16GB GAMING OC GDDR6 256BIT", precio: "S/ 2,999" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/450084-1200-1200?v=638826873036900000&width=1200&height=1200&aspect=true", nombre: "TARJETA DE VIDEO Msi NVIDIA RTX 5080 VENTUS 3X 16GB GDDR7, PCI5.0", precio: "S/ 5,899" },
+                { img: "https://www.infotec.com.pe/102286-large_default/tarjeta-de-video-gigabyte-rtx5050-8gb-low-profile-128-bit-gddr6-gv-n5050oc-8gl-.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RTX5050 8GB LOW PROFILE 128 BIT GDDR6 ( GV-N5050OC-8GL )", precio: "S/ 1,299" },
+                { img: "https://supertec.com.pe/img-apps/productos/T.-VIDEO-GIGABYTE-RADEON-RX7600-8GB-GAMING-OC-GDDR6-128BIT-1.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RADEON RX7600 8GB GAMING OC GDDR6 128BIT", precio: "S/ 899" },
+                { img: "https://supertec.com.pe/img-apps/productos/T_VIDEO-XFX-RADEON-SWFT210--RX6600-8GB-GDRR6-1.jpg", nombre: "TARJETA DE VIDEO XFX RADEON SWFT210 RX6600 8GB GDRR6", precio: "S/ 949" },
+                { img: "https://www.infotec.com.pe/102686-thickbox_default/tarjeta-de-video-gigabyte-rtx-5060-eagle-max-0c-8gb-gddr7-gv-n5060eaglemax-oc-8gd-128-bit.jpg", nombre: "TARJETA DE VIDEO GIGABYTE RTX 5060 EAGLE MAX 0C 8GB GDDR7 (GV-N5060EAGLEMAX OC-8GD) 128 BIT", precio: "S/ 1,449" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/469564-1200-1200?v=638875888610300000&width=1200&height=1200&aspect=true", nombre: "TARJETA DE VIDEO Zotac gaming GeForce RTX 5080 AMP Extreme Infinity, 256 bits, 16 GB", precio: "S/ 6,199" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/379456-1200-1200?v=638584867430600000&width=1200&height=1200&aspect=true", nombre: "TARJETA DE VIDEO Msi GeForce Nvidia RTX 3050 6GB GDDR6 Ventus 2X OC", precio: "S/ 570" }
+            ],
+            "Refrigeración": [
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/396086-1200-1200?v=638652121884170000&width=1200&height=1200&aspect=true", nombre: "Cooler procesador Antryx Mirage 550 Plus, ARGB, fan 130mm x2", precio: "S/ 259" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372754-1200-1200?v=638545387822230000&width=1200&height=1200&aspect=true", nombre: "Cooler para procesador Antryx Mirage 410 ARGB", precio: "S/ 109" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/335287-1200-1200?v=638392041870970000&width=1200&height=1200&aspect=true", nombre: "Sistema de enfriamiento líquido Triton Infinity 240, negro", precio: "S/ 439" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/335295-1200-1200?v=638392043235800000&width=1200&height=1200&aspect=true", nombre: "Sistema de enfriamiento líquido Triton Infinity 360, negro", precio: "S/ 549" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/193827-1200-1200?v=637720740527130000&width=1200&height=1200&aspect=true", nombre: "Sistema de refrigeración líquida MSI MPG Coreliquid K360, 360mm, 3-FAN, pantalla LCD 2.4", precio: "S/ 1,299" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/193813-1200-1200?v=637720719366730000&width=1200&height=1200&aspect=true", nombre: "Sistema de refrigeración líquida MSI MPG Coreliquid K240, ARGB, 240 mm, 2 FAN, pantalla LCD 2.4", precio: "S/ 999" },
+                { img: "https://www.impacto.com.pe/storage/products/md/17526026616716.webp", nombre: "Sistema De Enfriamiento Liquido Deepcool Mystique 360 (r-lx750-bkdsnmp-g-1) 3 Ventiladores, 360mm, Con Pantalla 2.8, Led Argb", precio: "S/ 699" },
+                { img: "https://www.impacto.com.pe/storage/products/md/176100520621875.webp", nombre: "Sistema De Enfriamiento Liquido Asus Prime Lc 360 Argb (prime-lc-360-argb)", precio: "S/ 442" }
+            ],
+            "Case": [
+                { img: "https://media.falabella.com/falabellaPE/139345663_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER BLANCO ASUS GT502 GAMING ATX USB 8R LADO VIDRIO TEMPLADO", precio: "S/ 948" },
+                { img: "https://media.falabella.com/falabellaPE/145286140_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER Gabinete De Computadora Ds900 Atx De Vidrio Templado Negro", precio: "S/ 500" },
+                { img: "https://media.falabella.com/falabellaPE/130901083_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER Cybertel Killer Cbx 5016 4 Fan Rgb Doble Ring 3.0 Gabinete", precio: "S/ 199" },
+                { img: "https://media.falabella.com/falabellaPE/146323727_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER TEROS TE-1314G, Mid Tower, USB 3.0 USB 2.0 ventilador ARGB", precio: "S/ 399" },
+                { img: "https://media.falabella.com/falabellaPE/123491330_01/w=1500,h=1500,fit=pad", nombre: "CASE GAMER TEROS TE1163W ARGB USB 3.0 MID TOWER", precio: "S/ 269" },
+                { img: "https://gamingpower.pe/cdn/shop/files/2_ed55ef8f-fb87-4db4-afba-b76cef8ae95c.jpg?v=1722794442&width=823", nombre: "CASE GAMER MSI MINI MAG PANO M100R 4FAN 5R ARGB BLANCO MICRO ATX USB3.2", precio: "S/ 449" },
+                { img: "https://gamingpower.pe/cdn/shop/files/1_6f3ef619-8395-4f85-90c7-2f959abf2f46.jpg?v=1757781280&width=823", nombre: "CASE GAMER NEGRO ATX TE-1174N MID TOWER ARGB SIN FUENTE LADO VIDRIO", precio: "S/ 189" },
+                { img: "https://gamingpower.pe/cdn/shop/files/1_6f3ef619-8395-4f85-90c7-2f959abf2f46.jpg?v=1757781280&width=1946", nombre: "CASE GAMER NEGRO ATX TE-1174N MID TOWER ARGB SIN FUENTE LADO VIDRIO", precio: "S/ 180" }
+            ],
+            "Fuente de Poder": [
+                { img: "https://media.falabella.com/falabellaPE/147868003_01/w=1500,h=1500,fit=pad", nombre: "FUENTE DE PODER MSI MAG A1000GL ATX 1000W Eficiencia 80 PLUS", precio: "S/ 649" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372734-1200-1200?v=638545210171300000&width=1200&height=1200&aspect=true", nombre: "FUENTE DE PODER Seasonic A12 500W, 80 Plus White", precio: "S/ 249" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372718-1200-1200?v=638545205884930000&width=1200&height=1200&aspect=true", nombre: "FUENTE DE PODER Antryx Kirin Gold Evo II 1000W, 80 Plus Gold, modular ATV3.0, Pcie 5.0", precio: "S/ 759" },
+                { img: "https://coolboxpe.vtexassets.com/arquivos/ids/372722-1200-1200?v=638545207335600000&width=1200&height=1200&aspect=true", nombre: "FUENTE DE PODER Antryx Kirin Gold Evo II 1200W, 80 Plus Gold, modular ATV3.0, Pcie 5.0", precio: "S/ 899" },
+                { img: "https://promart.vteximg.com.br/arquivos/ids/9709336-380-380/image-32c9e175ad954e0399ed6900eb0dff31.jpg?v=638993406270470000", nombre: "FUENTE DE PODER DOMINATING ATX 3.1 POWER 750W NGDP GOLD 1ST PLAYER", precio: "S/ 469" },
+                { img: "https://promart.vteximg.com.br/arquivos/ids/9316232-380-380/imageUrl_1.jpg?v=638932299814400000", nombre: "FUENTE DE PODER Antryx B500 V3 de 500W - Eficiencia, Rendimiento y Fiabilidad para PC Gamer", precio: "S/ 129" },
+                { img: "https://promart.vteximg.com.br/arquivos/ids/9709335-380-380/image-6c82b8a7fb4e4f70b2db763076bdd87d.jpg?v=638993406266100000", nombre: "FUENTE DE PODER AR 80 PLUS GOLD 650W 1ST PLAYER", precio: "S/ 500" },
+                { img: "https://promart.vteximg.com.br/arquivos/ids/9316281-380-380/imageUrl_1.jpg?v=638932299869000000", nombre: "FUENTE DE PODER Antec Atom G850 850W 80 Plus Gold, alta eficiencia y rendimiento superior", precio: "S/ 309" }
+            ],
+            "Periféricos": [
+                { img: "https://www.impacto.com.pe/storage/products/md/173827617965837.webp", nombre: "TECLADO GAMER Logitech G513 Carbon (920-009322) Mecanico, Switch Brown, Led Rgb, Negro", precio: "S/ 499" },
+                { img: "https://www.impacto.com.pe/storage/products/md/17399137755965.webp", nombre: "TECLADO GAMER Gaming Mecanico Mk Zigra Evo (amk-900kre-sp) Mecanico, Switch Red, Led Rgb", precio: "S/ 199" },
+                { img: "https://www.impacto.com.pe/storage/products/md/17603746199583.webp", nombre: "TECLADO GAMER Aula Win68he Max 65% Magnetico (au-w68hem3en7) Mecanico, Switch Magnetico Wing Chun, Color Negro, Plomo Y Amarillo", precio: "S/ 249" },
+                { img: "https://oechsle.vteximg.com.br/arquivos/ids/14900752/image-1995f609e8a745768898abbc130ca388.jpg?v=638282361660630000", nombre: "Mouse Logitech M585 Bluetooth usb unifying – Negro", precio: "S/ 109" },
+                { img: "https://www.printonerperu.com/wp-content/uploads/2021/10/Mouse-Gamer-Logitech-G502-lightspeed-inalambrico-recargable-01.jpg", nombre: "Mouse Gamer Logitech G502 lightspeed inalámbrico recargable", precio: "S/ 380" },
+                { img: "https://compudel.com.pe/22788-medium_default/microfono-kit-gaming-fifine-a6t-usb-black-rgb.jpg", nombre: "MICROFONO KIT GAMING FIFINE ( A6T ) USB BLACK RGB", precio: "S/ 189" },
+                { img: "https://hiraoka.com.pe/media/catalog/product/1/3/131965-2.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=560&width=700&canvas=700:560", nombre: "Audífonos Gamer con Micrófono Antryx Raider Plus", precio: "S/ 170" },
+                { img: "https://gamecenterperu.com/wp-content/uploads/2023/11/GC01762.jpg.webp", nombre: "Audifonos Gamer Logitech G635 Lightsync Black", precio: "S/ 519" }
+            ]
+        };
 
-            let url = `inventario.php?platform=${currentPlatform}&type=${componentType}`;
+        let carrito = [];
+        let categoriaActual = "Computadoras";
 
-            if (requiredSocket) {
-                url += `&socket=${requiredSocket}`;
-            }
-            if (requiredRamType) {
-                url += `&ram_type=${requiredRamType}`;
-            }
+        document.addEventListener('DOMContentLoaded', function () {
+            const marcaSeleccionada = localStorage.getItem('marcaProcesador') || 'Intel';
+            document.getElementById('marcaSeleccionada').textContent = marcaSeleccionada;
 
-            try {
-                const response = await fetch(url);
-                const products = await response.json();
+            generarTabsCategorias();
+            generarComponentes(categoriaActual);
+            cargarCarritoGuardado();
+            actualizarResumen();
+            actualizarContadorCarrito();
 
-                selectElement.innerHTML = `<option value="">Selecciona ${componentType}</option>`;
+            // Event listeners para búsqueda
+            document.getElementById('searchBtn').addEventListener('click', buscarComponentes);
+            document.getElementById('searchInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') buscarComponentes();
+            });
 
-                if (products && products.length > 0 && !products.error) {
-                    products.forEach(product => {
-                        const option = document.createElement('option');
-                        option.value = product.id;
+            // Botón vaciar carrito
+            document.getElementById('btnVaciar').addEventListener('click', vaciarCarrito);
 
-                        option.dataset.socket = product.socket;
-                        option.dataset.ramtype = product.ram_type;
-
-                        option.textContent = `(${product.id}) ${product.nombre} (S/ ${parseFloat(product.precio).toFixed(2)})`;
-                        selectElement.appendChild(option);
-                    });
-                } else {
-                    selectElement.innerHTML = `<option value="">No hay ${componentType} compatibles</option>`;
+            // Botón ir al carrito
+            document.getElementById('btnFinalizar').addEventListener('click', function () {
+                if (carrito.length === 0) {
+                    alert('Agrega al menos un componente al carrito antes de continuar');
+                    return;
                 }
-            } catch (error) {
-                console.error(`Error al cargar ${componentType}:`, error);
-                selectElement.innerHTML = `<option value="">Error de conexión / Datos no encontrados</option>`;
+                guardarCarrito();
+                window.location.href = 'carrito.html';
+            });
+        });
+
+        function actualizarContadorCarrito() {
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+
+        function generarTabsCategorias() {
+            const tabsContainer = document.getElementById('categoriasTabs');
+            const categorias = Object.keys(componentes);
+
+            categorias.forEach((categoria, index) => {
+                const button = document.createElement('button');
+                button.className = `categoria-btn ${index === 0 ? 'active' : ''}`;
+                button.textContent = categoria;
+                button.dataset.categoria = categoria;
+
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.categoria-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    categoriaActual = categoria;
+                    generarComponentes(categoria);
+                });
+
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        function generarComponentes(categoria) {
+            const grid = document.getElementById('componentesGrid');
+            grid.innerHTML = '';
+
+            if (componentes[categoria]) {
+                componentes[categoria].forEach((componente, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'componente-card';
+
+                    // Verificar si ya está en el carrito
+                    const enCarrito = carrito.find(item =>
+                        item.nombre === componente.nombre && item.categoria === categoria
+                    );
+                    const cantidad = enCarrito ? enCarrito.cantidad : 1;
+
+                    card.innerHTML = `
+                        <img src="${componente.img}" alt="${componente.nombre}" class="componente-img">
+                        <h3 class="componente-nombre">${componente.nombre}</h3>
+                        <div class="componente-precio">${componente.precio}</div>
+                        <div class="cantidad-control">
+                            <button class="btn-cantidad" onclick="cambiarCantidad(this, -1, '${categoria}', ${index})">-</button>
+                            <input type="number" min="1" value="${cantidad}" class="cantidad-input" 
+                                   onchange="actualizarCantidadInput(this, '${categoria}', ${index})">
+                            <button class="btn-cantidad" onclick="cambiarCantidad(this, 1, '${categoria}', ${index})">+</button>
+                        </div>
+                        ${enCarrito ?
+                            `<button class="btn-eliminar" onclick="eliminarDelCarrito('${categoria}', ${index})">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>` :
+                            `<button class="btn-agregar" onclick="agregarAlCarrito('${categoria}', ${index})">
+                                Agregar al Carrito
+                            </button>`
+                        }
+                    `;
+
+                    grid.appendChild(card);
+                });
             }
         }
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const platform = urlParams.get('marca');
+        function agregarAlCarrito(categoria, index) {
+            const componente = componentes[categoria][index];
+            const cantidadInput = document.querySelector(`.componente-card:nth-child(${index + 1}) .cantidad-input`);
+            const cantidad = parseInt(cantidadInput.value) || 1;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const stepHeaders = document.querySelectorAll('.step-header');
+            // Extraer precio numérico
+            const precioNumerico = parseFloat(componente.precio.replace('S/ ', '').replace(',', ''));
 
-            document.getElementById('select-cpu').addEventListener('change', (event) => {
-                const selectedOption = event.target.options[event.target.selectedIndex];
-                const requiredSocket = selectedOption.dataset.socket;
+            // Verificar si ya está en el carrito
+            const indexEnCarrito = carrito.findIndex(item =>
+                item.nombre === componente.nombre && item.categoria === categoria
+            );
 
-                document.getElementById('select-ram').innerHTML = `<option value="">Selecciona 1ra Memoria Ram</option>`;
-
-                if (requiredSocket) {
-                    populateSelect('select-motherboard', 'Placa Madre', platform, requiredSocket, null);
-                }
-            });
-
-            document.getElementById('select-motherboard').addEventListener('change', (event) => {
-                const selectedOption = event.target.options[event.target.selectedIndex];
-                const finalRamType = selectedOption.dataset.ramtype;
-
-                if (finalRamType) {
-                    populateSelect('select-ram', 'Memoria Ram', platform, null, finalRamType);
-                }
-            });
-
-            function loadInitialComponents(currentPlatform) {
-                populateSelect('select-cpu', 'Procesador', currentPlatform);
-
-                populateSelect('select-motherboard', 'Placa Madre', currentPlatform);
-                populateSelect('select-ram', 'Memoria Ram', currentPlatform);
-
-                const intelFilters = document.getElementById('intel-filters');
-                const amdFilters = document.getElementById('amd-filters');
-                const cpuLabel = document.querySelector('.step-item[data-step="3"] label[for="select-cpu"]');
-
-                if (currentPlatform === 'Intel') {
-                    intelFilters.style.display = 'block';
-                    amdFilters.style.display = 'none';
-                    cpuLabel.innerHTML = 'Procesador Intel * Obligatorio';
-                } else if (currentPlatform === 'AMD') {
-                    intelFilters.style.display = 'none';
-                    amdFilters.style.display = 'block';
-                    cpuLabel.innerHTML = 'Procesador AMD * Obligatorio';
-                }
+            if (indexEnCarrito === -1) {
+                // Agregar nuevo item
+                carrito.push({
+                    ...componente,
+                    categoria: categoria,
+                    precioNumerico: precioNumerico,
+                    cantidad: cantidad
+                });
+            } else {
+                // Actualizar cantidad si ya existe
+                carrito[indexEnCarrito].cantidad = cantidad;
             }
 
-            function filterStepContent(currentPlatform) {
-                loadInitialComponents(currentPlatform);
+            guardarCarrito();
+            actualizarResumen();
+            actualizarContadorCarrito();
+            generarComponentes(categoriaActual); // Actualizar botones
+        }
+
+        function eliminarDelCarrito(categoria, index) {
+            const componente = componentes[categoria][index];
+
+            // Encontrar y eliminar del carrito
+            const itemIndex = carrito.findIndex(item =>
+                item.nombre === componente.nombre && item.categoria === categoria
+            );
+
+            if (itemIndex !== -1) {
+                carrito.splice(itemIndex, 1);
+                guardarCarrito();
+                actualizarResumen();
+                actualizarContadorCarrito();
+                generarComponentes(categoriaActual);
+            }
+        }
+
+        function cambiarCantidad(button, cambio, categoria, index) {
+            const cantidadInput = button.parentElement.querySelector('.cantidad-input');
+            let cantidad = parseInt(cantidadInput.value) || 1;
+            cantidad += cambio;
+
+            if (cantidad < 1) cantidad = 1;
+            if (cantidad > 99) cantidad = 99;
+
+            cantidadInput.value = cantidad;
+        }
+
+        function actualizarCantidadInput(input, categoria, index) {
+            let cantidad = parseInt(input.value) || 1;
+            if (cantidad < 1) cantidad = 1;
+            if (cantidad > 99) cantidad = 99;
+            input.value = cantidad;
+        }
+
+        function actualizarResumen() {
+            const resumenLista = document.getElementById('resumenLista');
+            const totalCompra = document.getElementById('totalCompra');
+
+            if (carrito.length === 0) {
+                resumenLista.innerHTML = '<p style="text-align: center; color: #666;">Selecciona componentes para ver el resumen</p>';
+                totalCompra.textContent = 'S/ 0.00';
+                return;
             }
 
-            const toggleStep = (header, forceOpen = false) => {
-                const stepItem = header.parentElement;
-                const toggleIcon = header.querySelector('.toggle-icon');
-                const content = stepItem.querySelector('.step-content');
+            let html = '';
+            let total = 0;
 
-                const isCurrentlyOpen = stepItem.classList.contains('open');
+            carrito.forEach((item, index) => {
+                const subtotal = item.precioNumerico * item.cantidad;
+                total += subtotal;
 
-                document.querySelectorAll('.step-item').forEach(item => {
-                    item.classList.remove('open');
-                    item.querySelector('.step-content').style.maxHeight = '0';
-                    const icon = item.querySelector('.toggle-icon');
-                    if (icon) {
-                        icon.classList.remove('fa-minus');
-                        icon.classList.add('fa-plus');
+                html += `
+                    <div class="resumen-item">
+                        <div class="resumen-info">
+                            <div class="resumen-nombre">${item.nombre}</div>
+                            <div class="resumen-detalle">
+                                <span>Cantidad: ${item.cantidad}</span>
+                                <span>|</span>
+                                <span>${item.categoria}</span>
+                            </div>
+                        </div>
+                        <div class="resumen-precio">
+                            <div class="resumen-subtotal">S/ ${subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                            <div style="font-size: 14px; color: #666;">${item.precio} c/u</div>
+                        </div>
+                        <button class="btn-eliminar-item" onclick="eliminarItemResumen(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            resumenLista.innerHTML = html;
+            totalCompra.textContent = `S/ ${total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function eliminarItemResumen(index) {
+            if (index >= 0 && index < carrito.length) {
+                carrito.splice(index, 1);
+                guardarCarrito();
+                actualizarResumen();
+                actualizarContadorCarrito();
+                generarComponentes(categoriaActual);
+            }
+        }
+
+        function vaciarCarrito() {
+            if (carrito.length === 0) {
+                alert('El carrito ya está vacío');
+                return;
+            }
+
+            if (confirm('¿Estás seguro de que quieres vaciar todo el carrito?')) {
+                carrito = [];
+                guardarCarrito();
+                actualizarResumen();
+                actualizarContadorCarrito();
+                generarComponentes(categoriaActual);
+            }
+        }
+
+        function guardarCarrito() {
+            localStorage.setItem('carritoPC', JSON.stringify(carrito));
+        }
+
+        function cargarCarritoGuardado() {
+            const carritoGuardado = localStorage.getItem('carritoPC');
+            if (carritoGuardado) {
+                carrito = JSON.parse(carritoGuardado);
+            }
+        }
+
+        function buscarComponentes() {
+            const termino = document.getElementById('searchInput').value.trim().toLowerCase();
+
+            if (termino === '') {
+                generarComponentes(categoriaActual);
+                return;
+            }
+
+            const grid = document.getElementById('componentesGrid');
+            grid.innerHTML = '';
+
+            let resultados = [];
+
+            Object.keys(componentes).forEach(categoria => {
+                componentes[categoria].forEach(componente => {
+                    if (componente.nombre.toLowerCase().includes(termino)) {
+                        resultados.push({ ...componente, categoria: categoria });
                     }
                 });
-
-                if (forceOpen || !isCurrentlyOpen) {
-                    stepItem.classList.add('open');
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    toggleIcon.classList.remove('fa-plus');
-                    toggleIcon.classList.add('fa-minus');
-
-                    if (header.dataset.step === '3' && platform) {
-                        filterStepContent(platform);
-                    }
-                }
-            };
-
-            stepHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    toggleStep(header);
-                });
             });
 
-            const initialHeader = document.querySelector('.step-item[data-step="1"] .step-header');
-            if (initialHeader) {
-                toggleStep(initialHeader, true);
+            if (resultados.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">No se encontraron componentes con ese nombre</p>';
+                return;
             }
-        });
+
+            resultados.forEach((componente, index) => {
+                const card = document.createElement('div');
+                card.className = 'componente-card';
+
+                // Verificar si ya está en el carrito
+                const enCarrito = carrito.find(item =>
+                    item.nombre === componente.nombre && item.categoria === componente.categoria
+                );
+                const cantidad = enCarrito ? enCarrito.cantidad : 1;
+
+                card.innerHTML = `
+                    <img src="${componente.img}" alt="${componente.nombre}" class="componente-img">
+                    <h3 class="componente-nombre">${componente.nombre}</h3>
+                    <div class="componente-precio">${componente.precio}</div>
+                    <div style="font-size: 14px; color: #666; margin-bottom: 10px;">Categoría: ${componente.categoria}</div>
+                    <div class="cantidad-control">
+                        <button class="btn-cantidad" onclick="cambiarCantidadBusqueda(this, -1, ${index})">-</button>
+                        <input type="number" min="1" value="${cantidad}" class="cantidad-input" 
+                               id="cantidad-${index}">
+                        <button class="btn-cantidad" onclick="cambiarCantidadBusqueda(this, 1, ${index})">+</button>
+                    </div>
+                    ${enCarrito ?
+                        `<button class="btn-eliminar" onclick="eliminarDelCarritoBusqueda(${index})">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>` :
+                        `<button class="btn-agregar" onclick="agregarAlCarritoBusqueda(${index})">
+                            Agregar al Carrito
+                        </button>`
+                    }
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Funciones para búsqueda
+        window.cambiarCantidadBusqueda = function (button, cambio, index) {
+            const cantidadInput = document.getElementById(`cantidad-${index}`);
+            let cantidad = parseInt(cantidadInput.value) || 1;
+            cantidad += cambio;
+
+            if (cantidad < 1) cantidad = 1;
+            if (cantidad > 99) cantidad = 99;
+
+            cantidadInput.value = cantidad;
+        };
+
+        window.agregarAlCarritoBusqueda = function (index) {
+            const cantidadInput = document.getElementById(`cantidad-${index}`);
+            const cantidad = parseInt(cantidadInput.value) || 1;
+
+            // Necesitaríamos una manera de obtener el componente de la búsqueda
+            // Esto requiere una implementación más compleja que mantenga los resultados
+            alert('Para agregar desde búsqueda, vuelve a la categoría principal');
+        };
+
+        window.eliminarDelCarritoBusqueda = function (index) {
+            alert('Para eliminar desde búsqueda, vuelve a la categoría principal');
+        };
     </script>
-
 </body>
 
 </html>

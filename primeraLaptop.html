@@ -10,6 +10,92 @@
     <link rel="stylesheet" href="asistente.css">
     <link rel="stylesheet" href="primeraLaptop.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos para las laptops */
+        .productos {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .productos.visible {
+            display: grid;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .IMG {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .IMG:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .IMG img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            padding: 10px;
+        }
+
+        .IMG p {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+
+        .btn-carrito {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .btn-carrito:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4290 100%);
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +112,7 @@
         </div>
         <div class="usuarios">
             <a href="#"><i class="fas fa-user"></i>Cuenta usuario <i class="fas fa-caret-down"></i></a>
-            <a href="#"><i class="fas fa-shopping-cart"></i>Mi carrito de compras</a>
+            <a href="carrito.html"><i class="fas fa-shopping-cart"></i>Mi carrito de compras</a>
         </div>
     </header>
     <div class="anuncio">
@@ -39,17 +125,6 @@
         <input type="radio" id="uso-trabajo" name="uso" value="trabajo">
         <input type="radio" id="uso-diseño" name="uso" value="diseño">
         <input type="radio" id="uso-gaming" name="uso" value="gaming">
-
-        <input type="radio" id="marca-hp" name="marca" value="hp">
-        <input type="radio" id="marca-dell" name="marca" value="dell">
-        <input type="radio" id="marca-lenovo" name="marca" value="lenovo">
-        <input type="radio" id="marca-asus" name="marca" value="asus">
-        <input type="radio" id="marca-apple" name="marca" value="apple">
-        <input type="radio" id="marca-otros" name="marca" value="otros">
-
-        <input type="radio" id="pres-economico" name="presupuesto" value="economico">
-        <input type="radio" id="pres-intermedio" name="presupuesto" value="intermedio">
-        <input type="radio" id="pres-avanzado" name="presupuesto" value="avanzado">
     </div>
 
     <input type="radio" id="mostrar-paso1" name="control-pasos" checked style="display: none;">
@@ -57,91 +132,197 @@
     <input type="radio" id="mostrar-paso3" name="control-pasos" style="display: none;">
     <input type="radio" id="mostrar-resultados" name="control-pasos" style="display: none;">
 
-
     <main class="asistente-container">
         <div class="asistente-titulo">
             <h1>Encuentra tu Laptop Ideal</h1>
-            <p>Responde 3 simples preguntas y te daremos las mejores recomendaciones.</p>
+            <p>Selecciona el uso principal y te mostraremos las mejores opciones.</p>
         </div>
 
         <div class="paso" id="paso1">
-            <h2>1. ¿Cuál será el uso principal de tu nueva laptop?</h2>
+            <h2>¿Cuál será el uso principal de tu nueva laptop?</h2>
             <div class="opciones-container">
-                <label for="uso-estudios" class="opcion-btn" data-uso="estudios">
+                <label for="uso-estudios" class="opcion-btn" onclick="mostrarLaptops('estudios')">
                     <i class="fas fa-book"></i> <span>Estudios y Tareas</span>
                 </label>
-                <label for="uso-trabajo" class="opcion-btn" data-uso="trabajo">
+                <label for="uso-trabajo" class="opcion-btn" onclick="mostrarLaptops('trabajo')">
                     <i class="fas fa-briefcase"></i> <span>Trabajo de Oficina</span>
                 </label>
-                <label for="uso-diseño" class="opcion-btn" data-uso="diseño">
+                <label for="uso-diseño" class="opcion-btn" onclick="mostrarLaptops('diseño')">
                     <i class="fas fa-pencil-ruler"></i> <span>Diseño y Edición</span>
                 </label>
-                <label for="uso-gaming" class="opcion-btn" data-uso="gaming">
+                <label for="uso-gaming" class="opcion-btn" onclick="mostrarLaptops('gaming')">
                     <i class="fas fa-gamepad"></i> <span>Gaming</span>
                 </label>
-                <label for="mostrar-paso2" class="paso-siguiente"></label>
-            </div>
-        </div>
-
-        <div class="paso" id="paso2">
-            <h2>2. ¿Qué marca de laptop prefieres?</h2>
-            <div class="opciones-container">
-                <label for="marca-hp" class="opcion-btn marca-btn" data-marca="hp">HP</label>
-                <label for="marca-dell" class="opcion-btn marca-btn" data-marca="dell">Dell</label>
-                <label for="marca-lenovo" class="opcion-btn marca-btn" data-marca="lenovo">Lenovo</label>
-                <label for="marca-asus" class="opcion-btn marca-btn" data-marca="asus">Asus</label>
-                <label for="marca-apple" class="opcion-btn marca-btn" data-marca="apple">Apple</label>
-                <label for="marca-otros" class="opcion-btn marca-btn" data-marca="otros">Otras/Sin preferencia</label>
-
-                <label for="mostrar-paso3" class="paso-siguiente"></label>
-            </div>
-        </div>
-
-        <div class="paso" id="paso3">
-            <h2>3. ¿Cuál es tu presupuesto?</h2>
-            <div class="opciones-container">
-                <label for="pres-economico" class="opcion-btn presupuesto-btn" data-presupuesto="economico">Hasta S/
-                    2,000</label>
-                <label for="pres-intermedio" class="opcion-btn presupuesto-btn" data-presupuesto="intermedio">S/ 2,000 -
-                    S/ 4,000</label>
-                <label for="pres-avanzado" class="opcion-btn presupuesto-btn" data-presupuesto="avanzado">Más de S/
-                    4,000</label>
-
-                <label for="mostrar-resultados" class="finalizar-btn">Ver Recomendaciones</label>
             </div>
         </div>
     </main>
 
-    <div id="resultados-recomendados" class="resultados-container">
-        <h2>¡Aquí tienes tus laptops recomendadas!</h2>
-        <div class="imagenes">
-            <div class="resultado-card estudios hp economico">
-                <div class="laptop-card">
-                    <img src="./imagenes/hp-basico.jpg" alt="Laptop HP 14s">
-                    <div class="info">
-                        <h3>HP 14s</h3>
-                        <p class="desc">Ideal para documentos y navegación. Core i3, 8GB RAM.</p><button
-                            class="ver-oferta-btn">Ver Oferta <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-            </div>
+    <!-- Contenedor para las laptops -->
+    <div id="laptops-container" class="productos">
+        <!-- Laptops para Estudios y Tareas -->
+        <div class="IMG" data-uso="estudios trabajo">
+            <img src="https://images.pcel.com/1600/Computadoras-Laptops-Acer-NH-QESAA-004-492050-piU4EbyZw1jAFqxz.jpg"
+                alt="HP Básico">
+            <p>"Laptop Hp 15-fd0253la Intel Core i5-1334u 8gb Ram 512gb Ssd 15.6"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <div class="IMG" data-uso="estudios trabajo">
+            <img src="https://nanoloo.com/wp-content/uploads/2024/09/LENOVO-V15-G3-I3-IAP-1215U-8GB-RAM-512GB-15.6-PLATEADO-1024x1024.webp"
+                alt="Lenovo">
+            <p>"Laptop Lenovo V15 G3 Intel Core i3-1215U 8GB RAM"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
 
-            <div class="resultado-card diseño apple avanzado">
-                <div class="laptop-card">
-                    <img src="./imagenes/macbook-pro16.jpg" alt="MacBook Pro 16">
-                    <div class="info">
-                        <h3>MacBook Pro 16 (M3 Max)</h3>
-                        <p class="desc">Máxima potencia para diseño 3D y video 8K. Chip M3 Max.</p><button
-                            class="ver-oferta-btn">Ver Oferta <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-            </div>
+        <!-- Laptops para Trabajo de Oficina -->
+        <div class="IMG" data-uso="trabajo estudios">
+            <img src="https://oechsle.vteximg.com.br/arquivos/ids/22707377-1000-1000/2925698.jpg?v=638975225884100000"
+                alt="Lenovo">
+            <p>"Laptop Lenovo Ideapad Slim 3 16GB RAM AMD Ryze 7 5825U"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <div class="IMG" data-uso="diseño">
+            <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004356336347/full_image-2004356336347.webp"
+                alt="HP basica">
+            <p> "LAPTOP HP 15-FC0272LA AMD RYZEN™ 7 7730U 16GB RAM 512 GB SSD 15.6 FHD" </p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <div class="IMG" data-uso="diseño">
+            <img src="https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg"
+                alt="ASUS Vivobook">
+            <p>"LAPTOP ASUS VIVOBOOK 15 RYZEN 7 16GB 512GBSSD 15.6 FHD"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
 
-            <div class="resultado-card">
-                <label for="mostrar-paso1" class="reiniciar-btn">Reiniciar Asistente</label>
-            </div>
+        <!-- Laptops para Diseño y Edición -->
+        <div class="IMG" data-uso="diseño">
+            <img src="https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg"
+                alt="ASUS Zenbook">
+            <p>"Laptop ASUS Zenbook Pro Duo - Ideal para diseño profesional"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <div class="IMG" data-uso="diseño">
+            <img src="https://oechsle.vteximg.com.br/arquivos/ids/19306626-1000-1000/2650232_0001.jpg?v=638654731434930000"
+                alt="HP OMEN">
+            <p>"Laptop HP OMEN Transcend 14-fb0001la 14 NVIDIA GeForce RTX 4060 Intel Core Ultra 7 16GB RAM 1TB SSD
+                Shadow black"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <div class="IMG" data-uso="diseño">
+            <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361288570/full_image-2004361288570.webp"
+                alt="Lenovo LOQ">
+            <p> "LAPTOP LENOVO LOQ INTEL CORE I5 24GB RAM 512GB SSD 15.6 RTX 5050" </p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+
+        </div>
+        <div class="IMG" data-uso="diseño">
+            <img src="https://plazavea.vteximg.com.br/arquivos/ids/31807540-1000-1000/20506353.jpg" alt="Lenovo Legion">
+            <p>"Laptop LENOVO Legion 5 15IRX10 15.1" Intel Core i7 24GB 1TB W11"</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <div class="IMG" data-uso="diseño">
+            <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004335036978/full_image-2004335036978.webp"
+                alt="Lenovo Legion">
+            <p>"LAPTOP GAMER LENOVO LEGION PRO 5I INTEL CORE I9-14900HX 16GB RAM 1TB SSD 16" NVIDIA GEFORCE RTX4060 8GB"
+            </p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+        <!-- Laptops para Gaming -->
+        <div class="IMG" data-uso="gaming">
+            <img src="https://oechsle.vteximg.com.br/arquivos/ids/20876683/20424436jpg.jpg?v=638791427407570000"
+                alt="HP Victus">
+            <p>Laptop Gamer Hp Victus 15-fb3020la, amd Ryzen 7, 16gb Ram, 512gb Ssd, nvidia Geforce Rtx 3050, fhd,15.6"
+            </p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+
+        <div class="IMG" data-uso="gaming">
+            <img src="https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82" alt="Lenovo LOQ">
+            <p>Gamer Intel Core I5 Rtx3050 24gb 512gb Ssd Loq 12° Gen 15.6" Fhd 144 Hz</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+
+        <div class="IMG" data-uso="gaming">
+            <img src="https://rimage.ripley.com.pe/home.ripley/Attachment/WOP/1/2004361673659/full_image-2004361673659"
+                alt="ASUS ROG">
+            <p>LAPTOP ASUS ROG STRIX G615JMR-RV165W INTEL CORE I7 16GB RAM 512GB SSD 16" RTX 5060</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+
+        <div class="IMG" data-uso="gaming">
+            <img src="https://media.falabella.com/falabellaPE/145917725_01/w=1500,h=1500,fit=pad" alt="ASUS ROG G16">
+            <p>Laptop ROG Strix G16 R9 16GB RAM 1TB SSD RTX 5060 8GB W11</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+
+        <div class="IMG" data-uso="gaming">
+            <img src="https://pe.store.asus.com/media/catalog/product/r/o/rog-strix-scar-18_g835lx-sa119w_1.png?width=439&height=439&store=es_PE&image-type=image"
+                alt="ROG Strix SCAR">
+            <p>Laptop ROG Strix SCAR 18 (2025) G835LX-SA119W</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+
+        <div class="IMG" data-uso="gaming">
+            <img src="https://media.falabella.com/falabellaPE/149503195_01/w=1500,h=1500,fit=pad" alt="ASUS ROG G18">
+            <p>LAPTOP ASUS ROG STRIX G18 CORE ULTRA 9-275HX 32GB RAM 2TB SSD RTX 5080 16GB 18" 2.5K, WIN11</p>
+            <button class="btn-carrito"
+                onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ', 4789, 'https://toqen.pe/web/image/product.template/3321/image_1920?unique=6ecbb82')">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+            </button>
+        </div>
+
+        <div class="IMG" style="grid-column: 1 / -1; text-align: center; padding: 30px;">
+            <button onclick="ocultarLaptops()"
+                style="padding: 15px 30px; background: #4a5568; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: 600;">
+                <i class="fas fa-arrow-left"></i> Volver a seleccionar
+            </button>
         </div>
     </div>
+
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-contact">
@@ -205,6 +386,82 @@
         </div>
     </footer>
 
+    <script>
+        // Mostrar laptops según el uso seleccionado
+        function mostrarLaptops(uso) {
+            // Ocultar el asistente
+            document.querySelector('.asistente-container').style.display = 'none';
+
+            // Mostrar el contenedor de laptops
+            const contenedor = document.getElementById('laptops-container');
+            contenedor.classList.add('visible');
+
+            // Ocultar todas las laptops primero
+            const todasLaptops = contenedor.querySelectorAll('.IMG');
+            todasLaptops.forEach(laptop => {
+                laptop.style.display = 'none';
+            });
+
+            // Mostrar solo las laptops para el uso seleccionado
+            const laptopsFiltradas = contenedor.querySelectorAll(`.IMG[data-uso*="${uso}"]`);
+            laptopsFiltradas.forEach(laptop => {
+                laptop.style.display = 'flex';
+            });
+
+            // Si no hay laptops para ese uso, mostrar todas
+            if (laptopsFiltradas.length === 0) {
+                todasLaptops.forEach(laptop => {
+                    laptop.style.display = 'flex';
+                });
+            }
+
+            // Scroll hacia las laptops
+            contenedor.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Ocultar laptops y volver al asistente
+        function ocultarLaptops() {
+            document.getElementById('laptops-container').classList.remove('visible');
+            document.querySelector('.asistente-container').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Función para agregar al carrito
+        function agregarAlCarrito(nombre, precio, imagen) {
+            // Obtener carrito actual o crear uno nuevo
+            let carrito = JSON.parse(localStorage.getItem('carritoTecnicom')) || [];
+
+            // Verificar si el producto ya está en el carrito
+            const index = carrito.findIndex(item => item.nombre === nombre);
+
+            if (index > -1) {
+                carrito[index].cantidad += 1;
+            } else {
+                carrito.push({
+                    nombre: nombre,
+                    precio: precio,
+                    imagen: imagen,
+                    cantidad: 1,
+                    fecha: new Date().toISOString()
+                });
+            }
+
+            // Guardar en localStorage
+            localStorage.setItem('carritoTecnicom', JSON.stringify(carrito));
+
+            // Mostrar mensaje de confirmación
+            alert(`¡${nombre} añadido al carrito!\nPrecio: S/ ${precio}`);
+
+            // Redirigir al carrito
+            window.location.href = 'carrito.html';
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Asegurarse de que el asistente esté visible al inicio
+            document.querySelector('.asistente-container').style.display = 'block';
+        });
+    </script>
 </body>
 
 </html>
